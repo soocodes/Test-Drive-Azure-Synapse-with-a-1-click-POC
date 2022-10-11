@@ -1,0 +1,1680 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"type": "string",
+			"metadata": "Workspace name",
+			"defaultValue": "azulceqma3hoi4tipocws1"
+		},
+		"TripFaresSynapseAnalyticsLinkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'TripFaresSynapseAnalyticsLinkedService'"
+		},
+		"HttpServerTripDataLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/Azure/Test-Drive-Azure-Synapse-with-a-1-click-POC/main/tripDataAndFaresCSV/trip-data.csv"
+		},
+		"HttpServerTripFareDataLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/Azure/Test-Drive-Azure-Synapse-with-a-1-click-POC/main/tripDataAndFaresCSV/fares-data.csv"
+		},
+		"TripFaresDataLakeStorageLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{concat('https://',linkedService().datalakeAccountName,'.dfs.core.windows.net')}"
+		},
+		"keyVaultLinkedservice_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "@{concat('https://',linkedService().keyVaultName,'.vault.azure.net/')}"
+		}
+	},
+	"variables": {
+		"workspaceId": "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('workspaceName'), '/TripFaresDataPipeline')]",
+			"type": "Microsoft.Synapse/workspaces/pipelines",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"activities": [
+					{
+						"name": "IngestTripDataIntoADLS",
+						"description": "Copies the trip data csv file from the git repo and loads it into the ADLS.",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:10:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "tripsDataSource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "tripDataSink",
+								"type": "DatasetReference",
+								"parameters": {
+									"datalakeAccountName": {
+										"value": "@pipeline().parameters.datalakeAccountName",
+										"type": "Expression"
+									},
+									"keyVaultName": {
+										"value": "@pipeline().parameters.KeyVaultName",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "IngestTripFaresDataIntoADLS",
+						"description": "Copies the trip fare data csv file from the git repo and loads it into the ADLS.",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:10:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "faresDataSource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "faresDataSink",
+								"type": "DatasetReference",
+								"parameters": {
+									"keyVaultName": {
+										"value": "@pipeline().parameters.KeyVaultName",
+										"type": "Expression"
+									},
+									"datalakeAccountName": {
+										"value": "@pipeline().parameters.datalakeAccountName",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "JoinAndAggregateData",
+						"description": "Reads the raw data from both CSV files inside the ADLS, performs the desired transformations (inner join and aggregation) and writes the transformed data into the synapse SQL pool.",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Create Schema If Does Not Exists",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:30:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "tripFaresDataTransformations",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"TripDataCSV": {
+										"datalakeAccountName": {
+											"value": "@pipeline().parameters.datalakeAccountName",
+											"type": "Expression"
+										},
+										"keyVaultName": {
+											"value": "@pipeline().parameters.KeyVaultName",
+											"type": "Expression"
+										}
+									},
+									"FaresDataCSV": {
+										"keyVaultName": {
+											"value": "@pipeline().parameters.KeyVaultName",
+											"type": "Expression"
+										},
+										"datalakeAccountName": {
+											"value": "@pipeline().parameters.datalakeAccountName",
+											"type": "Expression"
+										}
+									},
+									"SynapseAnalyticsSink": {
+										"SchemaName": {
+											"value": "@pipeline().parameters.SchemaName",
+											"type": "Expression"
+										},
+										"SynapseWorkspaceName": {
+											"value": "@pipeline().parameters.SynapseWorkspaceName",
+											"type": "Expression"
+										},
+										"SQLDedicatedPoolName": {
+											"value": "@pipeline().parameters.SQLDedicatedPoolName",
+											"type": "Expression"
+										},
+										"keyVaultName": {
+											"value": "@pipeline().parameters.KeyVaultName",
+											"type": "Expression"
+										},
+										"SQLLoginUsername": {
+											"value": "@pipeline().parameters.SQLLoginUsername",
+											"type": "Expression"
+										}
+									}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					},
+					{
+						"name": "Create Schema If Does Not Exists",
+						"description": "Creates the schema inside the SQL dedicated pool. Shema name comes from the pipeline parameter 'SchemaName'.",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "IngestTripDataIntoADLS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "IngestTripFaresDataIntoADLS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:05:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SqlDWSource",
+								"sqlReaderQuery": {
+									"value": "IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = '@{pipeline().parameters.SchemaName}')\nBEGIN\nEXEC('CREATE SCHEMA @{pipeline().parameters.SchemaName}')\nselect Count(*) from sys.symmetric_keys;\nEND\nELSE\nBEGIN\n    select Count(*) from sys.symmetric_keys;\nEND",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "azureSynapseAnalyticsSchema",
+								"type": "DatasetReference",
+								"parameters": {
+									"SynapseWorkspaceName": {
+										"value": "@pipeline().parameters.SynapseWorkspaceName",
+										"type": "Expression"
+									},
+									"SQLDedicatedPoolName": {
+										"value": "@pipeline().parameters.SQLDedicatedPoolName",
+										"type": "Expression"
+									},
+									"keyVaultName": {
+										"value": "@pipeline().parameters.KeyVaultName",
+										"type": "Expression"
+									},
+									"SQLLoginUsername": {
+										"value": "@pipeline().parameters.SQLLoginUsername",
+										"type": "Expression"
+									}
+								}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Copy data Trips Data",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Create Schema If Does Not Exists",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SqlDWSink",
+								"preCopyScript": "IF (EXISTS (SELECT *\n  FROM INFORMATION_SCHEMA.TABLES\n  WHERE TABLE_SCHEMA = 'dbo'\n  AND TABLE_NAME = 'TripsData'))\nBEGIN \n   Truncate table TripsData;\nEnd\n",
+								"allowPolyBase": true,
+								"polyBaseSettings": {
+									"rejectValue": 0,
+									"rejectType": "value",
+									"useTypeDefault": true
+								},
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": true,
+							"stagingSettings": {
+								"linkedServiceName": {
+									"referenceName": "TripFaresDataLakeStorageLinkedService",
+									"type": "LinkedServiceReference",
+									"parameters": {
+										"keyVaultName": {
+											"value": "@pipeline().parameters.KeyVaultName",
+											"type": "Expression"
+										},
+										"datalakeAccountName": {
+											"value": "@pipeline().parameters.datalakeAccountName",
+											"type": "Expression"
+										}
+									}
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "tripsDataSource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSynapseAnalyticsTripsData",
+								"type": "DatasetReference",
+								"parameters": {
+									"SynapseWorkspaceName": {
+										"value": "@pipeline().parameters.SynapseWorkspaceName",
+										"type": "Expression"
+									},
+									"SQLDedicatedPoolName": {
+										"value": "@pipeline().parameters.SQLDedicatedPoolName",
+										"type": "Expression"
+									},
+									"keyVaultName": {
+										"value": "@pipeline().parameters.KeyVaultName",
+										"type": "Expression"
+									},
+									"SQLLoginUsername": {
+										"value": "@pipeline().parameters.SQLLoginUsername",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "Copy data Fares Data",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Create Schema If Does Not Exists",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SqlDWSink",
+								"preCopyScript": "IF (EXISTS (SELECT *\n  FROM INFORMATION_SCHEMA.TABLES\n  WHERE TABLE_SCHEMA = 'dbo'\n  AND TABLE_NAME = 'FaresData'))\nBEGIN \n   Truncate table FaresData;\nEnd\n",
+								"allowPolyBase": true,
+								"polyBaseSettings": {
+									"rejectValue": 0,
+									"rejectType": "value",
+									"useTypeDefault": true
+								},
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": true,
+							"stagingSettings": {
+								"linkedServiceName": {
+									"referenceName": "TripFaresDataLakeStorageLinkedService",
+									"type": "LinkedServiceReference",
+									"parameters": {
+										"keyVaultName": {
+											"value": "@pipeline().parameters.KeyVaultName",
+											"type": "Expression"
+										},
+										"datalakeAccountName": {
+											"value": "@pipeline().parameters.datalakeAccountName",
+											"type": "Expression"
+										}
+									}
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "faresDataSource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSynapseAnalyticsFaresData",
+								"type": "DatasetReference",
+								"parameters": {
+									"SynapseWorkspaceName": {
+										"value": "@pipeline().parameters.SynapseWorkspaceName",
+										"type": "Expression"
+									},
+									"SQLDedicatedPoolName": {
+										"value": "@pipeline().parameters.SQLDedicatedPoolName",
+										"type": "Expression"
+									},
+									"keyVaultName": {
+										"value": "@pipeline().parameters.KeyVaultName",
+										"type": "Expression"
+									},
+									"SQLLoginUsername": {
+										"value": "@pipeline().parameters.SQLLoginUsername",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"SchemaName": {
+						"type": "string",
+						"defaultValue": "tripFares"
+					},
+					"SynapseWorkspaceName": {
+						"type": "string",
+						"defaultValue": "azulceqma3hoi4tipocws1.database.windows.net"
+					},
+					"SQLDedicatedPoolName": {
+						"type": "string",
+						"defaultValue": "azulceqma3hoi4tipocws1p1"
+					},
+					"SQLLoginUsername": {
+						"type": "string",
+						"defaultValue": "SmcCanada_admin"
+					},
+					"KeyVaultName": {
+						"type": "string",
+						"defaultValue": "kvazulceqma3hoi4tipoc"
+					},
+					"datalakeAccountName": {
+						"type": "string",
+						"defaultValue": "azulceqma3hoi4tipoc"
+					}
+				},
+				"folder": {
+					"name": "TripFaresDataPipeline"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/datasets/tripsDataSource')]",
+				"[concat(variables('workspaceId'), '/datasets/tripDataSink')]",
+				"[concat(variables('workspaceId'), '/datasets/faresDataSource')]",
+				"[concat(variables('workspaceId'), '/datasets/faresDataSink')]",
+				"[concat(variables('workspaceId'), '/dataflows/tripFaresDataTransformations')]",
+				"[concat(variables('workspaceId'), '/datasets/azureSynapseAnalyticsSchema')]",
+				"[concat(variables('workspaceId'), '/datasets/AzureSynapseAnalyticsTripsData')]",
+				"[concat(variables('workspaceId'), '/datasets/AzureSynapseAnalyticsFaresData')]",
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresDataLakeStorageLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/AzureSynapseAnalyticsFaresData')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresSynapseAnalyticsLinkedService",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"SynapseWorkspaceName": {
+							"value": "@dataset().SynapseWorkspaceName",
+							"type": "Expression"
+						},
+						"SQLDedicatedPoolName": {
+							"value": "@dataset().SQLDedicatedPoolName",
+							"type": "Expression"
+						},
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						},
+						"SQLLoginUsername": {
+							"value": "@dataset().SQLLoginUsername",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"SynapseWorkspaceName": {
+						"type": "string"
+					},
+					"SQLDedicatedPoolName": {
+						"type": "string"
+					},
+					"keyVaultName": {
+						"type": "string"
+					},
+					"SQLLoginUsername": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {
+					"table": "FaresData"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresSynapseAnalyticsLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/AzureSynapseAnalyticsTable1')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresSynapseAnalyticsLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresSynapseAnalyticsLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/AzureSynapseAnalyticsTripsData')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresSynapseAnalyticsLinkedService",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"SynapseWorkspaceName": {
+							"value": "@dataset().SynapseWorkspaceName",
+							"type": "Expression"
+						},
+						"SQLDedicatedPoolName": {
+							"value": "@dataset().SQLDedicatedPoolName",
+							"type": "Expression"
+						},
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						},
+						"SQLLoginUsername": {
+							"value": "@dataset().SQLLoginUsername",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"SynapseWorkspaceName": {
+						"type": "string"
+					},
+					"SQLDedicatedPoolName": {
+						"type": "string"
+					},
+					"keyVaultName": {
+						"type": "string"
+					},
+					"SQLLoginUsername": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {
+					"table": "TripsData"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresSynapseAnalyticsLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/azureSynapseAnalyticsSchema')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresSynapseAnalyticsLinkedService",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"SynapseWorkspaceName": {
+							"value": "@dataset().SynapseWorkspaceName",
+							"type": "Expression"
+						},
+						"SQLDedicatedPoolName": {
+							"value": "@dataset().SQLDedicatedPoolName",
+							"type": "Expression"
+						},
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						},
+						"SQLLoginUsername": {
+							"value": "@dataset().SQLLoginUsername",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"SynapseWorkspaceName": {
+						"type": "string"
+					},
+					"SQLDedicatedPoolName": {
+						"type": "string"
+					},
+					"keyVaultName": {
+						"type": "string"
+					},
+					"SQLLoginUsername": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "TripFareDatasets"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresSynapseAnalyticsLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/azureSynapseAnalyticsTable')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresSynapseAnalyticsLinkedService",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"SynapseWorkspaceName": {
+							"value": "@dataset().SynapseWorkspaceName",
+							"type": "Expression"
+						},
+						"SQLDedicatedPoolName": {
+							"value": "@dataset().SQLDedicatedPoolName",
+							"type": "Expression"
+						},
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						},
+						"SQLLoginUsername": {
+							"value": "@dataset().SQLLoginUsername",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"SchemaName": {
+						"type": "string"
+					},
+					"SynapseWorkspaceName": {
+						"type": "string"
+					},
+					"SQLDedicatedPoolName": {
+						"type": "string"
+					},
+					"keyVaultName": {
+						"type": "string"
+					},
+					"SQLLoginUsername": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "TripFareDatasets"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().SchemaName",
+						"type": "Expression"
+					},
+					"table": "AggregateTaxiData"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresSynapseAnalyticsLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/faresDataSink')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresDataLakeStorageLinkedService",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						},
+						"datalakeAccountName": {
+							"value": "@dataset().datalakeAccountName",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"keyVaultName": {
+						"type": "string",
+						"defaultValue": "kvmsft"
+					},
+					"datalakeAccountName": {
+						"type": "string",
+						"defaultValue": "adlsmsft"
+					}
+				},
+				"folder": {
+					"name": "TripFareDatasets"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "fares-data.csv",
+						"fileSystem": "public"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "medallion",
+						"type": "String"
+					},
+					{
+						"name": "hack_license",
+						"type": "String"
+					},
+					{
+						"name": "vendor_id",
+						"type": "String"
+					},
+					{
+						"name": "pickup_datetime",
+						"type": "String"
+					},
+					{
+						"name": "payment_type",
+						"type": "String"
+					},
+					{
+						"name": "fare_amount",
+						"type": "String"
+					},
+					{
+						"name": "surcharge",
+						"type": "String"
+					},
+					{
+						"name": "mta_tax",
+						"type": "String"
+					},
+					{
+						"name": "tip_amount",
+						"type": "String"
+					},
+					{
+						"name": "tolls_amount",
+						"type": "String"
+					},
+					{
+						"name": "total_amount",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresDataLakeStorageLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/faresDataSource')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServerTripFareDataLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "TripFareDatasets"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/HttpServerTripFareDataLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/tripDataSink')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TripFaresDataLakeStorageLinkedService",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						},
+						"datalakeAccountName": {
+							"value": "@dataset().datalakeAccountName",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"datalakeAccountName": {
+						"type": "string"
+					},
+					"keyVaultName": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "TripFareDatasets"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "trip-data.csv",
+						"fileSystem": "public"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "medallion",
+						"type": "String"
+					},
+					{
+						"name": "hack_license",
+						"type": "String"
+					},
+					{
+						"name": "vendor_id",
+						"type": "String"
+					},
+					{
+						"name": "rate_code",
+						"type": "String"
+					},
+					{
+						"name": "store_and_fwd_flag",
+						"type": "String"
+					},
+					{
+						"name": "pickup_datetime",
+						"type": "String"
+					},
+					{
+						"name": "dropoff_datetime",
+						"type": "String"
+					},
+					{
+						"name": "passenger_count",
+						"type": "String"
+					},
+					{
+						"name": "trip_time_in_secs",
+						"type": "String"
+					},
+					{
+						"name": "trip_distance",
+						"type": "String"
+					},
+					{
+						"name": "pickup_longitude",
+						"type": "String"
+					},
+					{
+						"name": "pickup_latitude",
+						"type": "String"
+					},
+					{
+						"name": "dropoff_longitude",
+						"type": "String"
+					},
+					{
+						"name": "dropoff_latitude",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TripFaresDataLakeStorageLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/tripsDataSource')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServerTripDataLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "TripFareDatasets"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/HttpServerTripDataLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/HttpServerTripDataLinkedService')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('HttpServerTripDataLinkedService_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/HttpServerTripFareDataLinkedService')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('HttpServerTripFareDataLinkedService_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/PowerBIWorkspaceTripsFares')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "PowerBIWorkspace",
+				"typeProperties": {
+					"workspaceID": "",
+					"tenantID": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/TripFaresDataLakeStorageLinkedService')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"parameters": {
+					"keyVaultName": {
+						"type": "string"
+					},
+					"datalakeAccountName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('TripFaresDataLakeStorageLinkedService_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "keyVaultLinkedservice",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"keyVaultName": {
+									"value": "@linkedService().keyVaultName",
+									"type": "Expression"
+								}
+							}
+						},
+						"secretName": "adlsAccessKey"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
+				"[concat(variables('workspaceId'), '/linkedServices/keyVaultLinkedservice')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/TripFaresSynapseAnalyticsLinkedService')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"parameters": {
+					"SynapseWorkspaceName": {
+						"type": "string"
+					},
+					"SQLDedicatedPoolName": {
+						"type": "string"
+					},
+					"keyVaultName": {
+						"type": "string"
+					},
+					"SQLLoginUsername": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('TripFaresSynapseAnalyticsLinkedService_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "keyVaultLinkedservice",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"keyVaultName": {
+									"value": "@linkedService().keyVaultName",
+									"type": "Expression"
+								}
+							}
+						},
+						"secretName": "synapseSqlLoginPassword"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
+				"[concat(variables('workspaceId'), '/linkedServices/keyVaultLinkedservice')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/keyVaultLinkedservice')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"parameters": {
+					"keyVaultName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('keyVaultLinkedservice_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/AutoResolveIntegrationRuntime')]",
+			"type": "Microsoft.Synapse/workspaces/integrationRuntimes",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/tripFaresDataTransformations')]",
+			"type": "Microsoft.Synapse/workspaces/dataflows",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"folder": {
+					"name": "TripFaresDataFlow"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "tripDataSink",
+								"type": "DatasetReference"
+							},
+							"name": "TripDataCSV"
+						},
+						{
+							"dataset": {
+								"referenceName": "faresDataSink",
+								"type": "DatasetReference"
+							},
+							"name": "FaresDataCSV"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "azureSynapseAnalyticsTable",
+								"type": "DatasetReference"
+							},
+							"name": "SynapseAnalyticsSink"
+						}
+					],
+					"transformations": [
+						{
+							"name": "AggregateByPaymentType"
+						},
+						{
+							"name": "InnerJoinWithTripFares"
+						}
+					],
+					"script": "source(output(\n\t\tmedallion as string,\n\t\thack_license as string,\n\t\tvendor_id as string,\n\t\trate_code as string,\n\t\tstore_and_fwd_flag as string,\n\t\tpickup_datetime as string,\n\t\tdropoff_datetime as string,\n\t\tpassenger_count as string,\n\t\ttrip_time_in_secs as string,\n\t\ttrip_distance as string,\n\t\tpickup_longitude as string,\n\t\tpickup_latitude as string,\n\t\tdropoff_longitude as string,\n\t\tdropoff_latitude as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false) ~> TripDataCSV\nsource(output(\n\t\tmedallion as string,\n\t\thack_license as string,\n\t\tvendor_id as string,\n\t\tpickup_datetime as string,\n\t\tpayment_type as string,\n\t\tfare_amount as string,\n\t\tsurcharge as string,\n\t\tmta_tax as string,\n\t\ttip_amount as string,\n\t\ttolls_amount as string,\n\t\ttotal_amount as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false) ~> FaresDataCSV\nInnerJoinWithTripFares aggregate(groupBy(payment_type),\n\taverage_fare = avg(toInteger(total_amount)),\n\t\ttotal_trip_distance = sum(toInteger(trip_distance))) ~> AggregateByPaymentType\nTripDataCSV, FaresDataCSV join(TripDataCSV@medallion == FaresDataCSV@medallion\n\t&& TripDataCSV@hack_license == FaresDataCSV@hack_license\n\t&& TripDataCSV@vendor_id == FaresDataCSV@vendor_id\n\t&& TripDataCSV@pickup_datetime == FaresDataCSV@pickup_datetime,\n\tjoinType:'inner',\n\tmatchType:'exact',\n\tignoreSpaces: false,\n\tbroadcast: 'auto')~> InnerJoinWithTripFares\nAggregateByPaymentType sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\trecreate:true,\n\tformat: 'table',\n\tstaged: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> SynapseAnalyticsSink"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/datasets/tripDataSink')]",
+				"[concat(variables('workspaceId'), '/datasets/faresDataSink')]",
+				"[concat(variables('workspaceId'), '/datasets/azureSynapseAnalyticsTable')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/WorkspaceSystemIdentity')]",
+			"type": "Microsoft.Synapse/workspaces/credentials",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/Data Exploration and ML Modeling - NYC taxi predict using Spark MLlib')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "ws1sparkpool1",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "56g",
+					"driverCores": 8,
+					"executorMemory": "56g",
+					"executorCores": 8,
+					"numExecutors": 2,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"synapse_widget": {
+						"version": "0.1"
+					},
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/4eeedd72-d937-4243-86d1-c3982a84d924/resourceGroups/nashahzsfin/providers/Microsoft.Synapse/workspaces/mfstspdjvzuh3xeu2pocws1/bigDataPools/ws1sparkpool1",
+						"name": "ws1sparkpool1",
+						"type": "Spark",
+						"endpoint": "https://mfstspdjvzuh3xeu2pocws1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/ws1sparkpool1",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "2.4",
+						"nodeCount": 5,
+						"cores": 8,
+						"memory": 56
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "markdown",
+						"source": [
+							"# Predict NYC Taxi Tips using Spark ML and Azure Open Datasets\n",
+							"\n",
+							"The notebook ingests, visualizes, prepares and then trains a model based on an Open Dataset that tracks NYC Yellow Taxi trips and various attributes around them.\n",
+							"The goal is to predict for a given trip whether there will be a tip or not.\n",
+							"\n",
+							" https://docs.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-machine-learning-mllib-notebook\n",
+							""
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"import matplotlib.pyplot as plt\n",
+							"\n",
+							"from pyspark.sql.functions import unix_timestamp\n",
+							"\n",
+							"from pyspark.sql import SparkSession\n",
+							"from pyspark.sql.types import *\n",
+							"from pyspark.sql.functions import *\n",
+							"\n",
+							"from pyspark.ml import Pipeline\n",
+							"from pyspark.ml import PipelineModel\n",
+							"from pyspark.ml.feature import RFormula\n",
+							"from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorIndexer\n",
+							"from pyspark.ml.classification import LogisticRegression\n",
+							"from pyspark.mllib.evaluation import BinaryClassificationMetrics\n",
+							"from pyspark.ml.evaluation import BinaryClassificationEvaluator"
+						],
+						"outputs": [],
+						"execution_count": 1
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Ingest Data¶ \n",
+							"\n",
+							"Get a sample data of nyc yellow taxi to make it faster/easier to evaluate different approaches to prep for the modelling phase later in the notebook."
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"# Import NYC yellow cab data from Azure Open Datasets\n",
+							"from azureml.opendatasets import NycTlcYellow\n",
+							"\n",
+							"from datetime import datetime\n",
+							"from dateutil import parser\n",
+							"\n",
+							"end_date = parser.parse('2018-05-08 00:00:00')\n",
+							"start_date = parser.parse('2018-05-01 00:00:00')\n",
+							"\n",
+							"nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)\n",
+							"nyc_tlc_df = nyc_tlc.to_spark_dataframe()"
+						],
+						"outputs": [],
+						"execution_count": 2
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"#To make development easier, faster and less expensive downsample for now\n",
+							"sampled_taxi_df = nyc_tlc_df.sample(True, 0.001, seed=1234)"
+						],
+						"outputs": [],
+						"execution_count": 3
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Exploratory Data Analysis\n",
+							"\n",
+							"Look at the data and evaluate its suitability for use in a model, do this via some basic charts focussed on tip values and relationships."
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"#The charting package needs a Pandas dataframe or numpy array do the conversion\n",
+							"sampled_taxi_pd_df = sampled_taxi_df.toPandas()\n",
+							"\n",
+							"# Look at tips by amount count histogram\n",
+							"ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')\n",
+							"ax1.set_title('Tip amount distribution')\n",
+							"ax1.set_xlabel('Tip Amount ($)')\n",
+							"ax1.set_ylabel('Counts')\n",
+							"plt.suptitle('')\n",
+							"plt.show()\n",
+							"\n",
+							"# How many passengers tip'd by various amounts\n",
+							"ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])\n",
+							"ax2.set_title('Tip amount by Passenger count')\n",
+							"ax2.set_xlabel('Passenger count') \n",
+							"ax2.set_ylabel('Tip Amount ($)')\n",
+							"plt.suptitle('')\n",
+							"plt.show()\n",
+							"\n",
+							"# Look at the relationship between fare and tip amounts\n",
+							"ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))\n",
+							"ax.set_title('Tip amount by Fare amount')\n",
+							"ax.set_xlabel('Fare Amount ($)')\n",
+							"ax.set_ylabel('Tip Amount ($)')\n",
+							"plt.axis([-2, 80, -2, 20])\n",
+							"plt.suptitle('')\n",
+							"plt.show()"
+						],
+						"outputs": [],
+						"execution_count": 4
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Data Prep and Featurization\n",
+							"\n",
+							"It's clear from the visualizations above that there are a bunch of outliers in the data. These will need to be filtered out in addition there are extra variables that are not going to be useful in the model we build at the end.\n",
+							"\n",
+							"Finally there is a need to create some new (derived) variables that will work better with the model.\n",
+							""
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\\\n",
+							"                                , 'tripDistance', 'tpepPickupDateTime', 'tpepDropoffDateTime'\\\n",
+							"                                , date_format('tpepPickupDateTime', 'hh').alias('pickupHour')\\\n",
+							"                                , date_format('tpepPickupDateTime', 'EEEE').alias('weekdayString')\\\n",
+							"                                , (unix_timestamp(col('tpepDropoffDateTime')) - unix_timestamp(col('tpepPickupDateTime'))).alias('tripTimeSecs')\\\n",
+							"                                , (when(col('tipAmount') > 0, 1).otherwise(0)).alias('tipped')\n",
+							"                                )\\\n",
+							"                        .filter((sampled_taxi_df.passengerCount > 0) & (sampled_taxi_df.passengerCount < 8)\\\n",
+							"                                & (sampled_taxi_df.tipAmount >= 0) & (sampled_taxi_df.tipAmount <= 25)\\\n",
+							"                                & (sampled_taxi_df.fareAmount >= 1) & (sampled_taxi_df.fareAmount <= 250)\\\n",
+							"                                & (sampled_taxi_df.tipAmount < sampled_taxi_df.fareAmount)\\\n",
+							"                                & (sampled_taxi_df.tripDistance > 0) & (sampled_taxi_df.tripDistance <= 100)\\\n",
+							"                                & (sampled_taxi_df.rateCodeId <= 5)\n",
+							"                                & (sampled_taxi_df.paymentType.isin({\"1\", \"2\"}))\n",
+							"                                )"
+						],
+						"outputs": [],
+						"execution_count": 5
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Data Prep and Featurization Part 2\n",
+							"\n",
+							"Having created new variables its now possible to drop the columns they were derived from so that the dataframe that goes into the model is the smallest in terms of number of variables, that is required.\n",
+							"\n",
+							"Also create some more features based on new columns from the first round.\n",
+							""
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'passengerCount'\\\n",
+							"                                                , 'tripDistance', 'weekdayString', 'pickupHour','tripTimeSecs','tipped'\\\n",
+							"                                                , when((taxi_df.pickupHour <= 6) | (taxi_df.pickupHour >= 20),\"Night\")\\\n",
+							"                                                .when((taxi_df.pickupHour >= 7) & (taxi_df.pickupHour <= 10), \"AMRush\")\\\n",
+							"                                                .when((taxi_df.pickupHour >= 11) & (taxi_df.pickupHour <= 15), \"Afternoon\")\\\n",
+							"                                                .when((taxi_df.pickupHour >= 16) & (taxi_df.pickupHour <= 19), \"PMRush\")\\\n",
+							"                                                .otherwise(0).alias('trafficTimeBins')\n",
+							"                                              )\\\n",
+							"                                       .filter((taxi_df.tripTimeSecs >= 30) & (taxi_df.tripTimeSecs <= 7200))"
+						],
+						"outputs": [],
+						"execution_count": 6
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Encoding\n",
+							"\n",
+							"Different ML algorithms support different types of input, for this example Logistic Regression is being used for Binary Classification. This means that any Categorical (string) variables must be converted to numbers.\n",
+							"\n",
+							"The process is not as simple as a \"map\" style function as the relationship between the numbers can introduce a bias in the resulting model, the approach is to index the variable and then encode using a std approach called One Hot Encoding.\n",
+							"\n",
+							"This approach requires the encoder to \"learn\"/fit a model over the data in the Spark instance and then transform based on what was learnt.\n",
+							""
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"# The sample uses an algorithm that only works with numeric features convert them so they can be consumed\n",
+							"sI1 = StringIndexer(inputCol=\"trafficTimeBins\", outputCol=\"trafficTimeBinsIndex\"); \n",
+							"en1 = OneHotEncoder(dropLast=False, inputCol=\"trafficTimeBinsIndex\", outputCol=\"trafficTimeBinsVec\");\n",
+							"sI2 = StringIndexer(inputCol=\"weekdayString\", outputCol=\"weekdayIndex\"); \n",
+							"en2 = OneHotEncoder(dropLast=False, inputCol=\"weekdayIndex\", outputCol=\"weekdayVec\");\n",
+							"\n",
+							"# Create a new dataframe that has had the encodings applied\n",
+							"encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)"
+						],
+						"outputs": [],
+						"execution_count": 7
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Generation of Testing and Training Data Sets\n",
+							"Simple split, 70% for training and 30% for testing the model. Playing with this ratio may result in different models.\n",
+							""
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"# Decide on the split between training and testing data from the dataframe \n",
+							"trainingFraction = 0.7\n",
+							"testingFraction = (1-trainingFraction)\n",
+							"seed = 1234\n",
+							"\n",
+							"# Split the dataframe into test and training dataframes\n",
+							"train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, testingFraction], seed=seed)"
+						],
+						"outputs": [],
+						"execution_count": 8
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Train the Model\n",
+							"\n",
+							"Train the Logistic Regression model and then evaluate it using Area under ROC as the metric."
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"## Create a new LR object for the model\n",
+							"logReg = LogisticRegression(maxIter=10, regParam=0.3, labelCol = 'tipped')\n",
+							"\n",
+							"## The formula for the model\n",
+							"classFormula = RFormula(formula=\"tipped ~ pickupHour + weekdayVec + passengerCount + tripTimeSecs + tripDistance + fareAmount + paymentType+ trafficTimeBinsVec\")\n",
+							"\n",
+							"## Undertake training and create an LR model\n",
+							"lrModel = Pipeline(stages=[classFormula, logReg]).fit(train_data_df)\n",
+							"\n",
+							"## Saving the model is optional but its another for of inter session cache\n",
+							"datestamp = datetime.now().strftime('%m-%d-%Y-%s');\n",
+							"fileName = \"lrModel_\" + datestamp;\n",
+							"logRegDirfilename = fileName;\n",
+							"lrModel.save(logRegDirfilename)\n",
+							"\n",
+							"## Predict tip 1/0 (yes/no) on the test dataset, evaluation using AUROC\n",
+							"predictions = lrModel.transform(test_data_df)\n",
+							"predictionAndLabels = predictions.select(\"label\",\"prediction\").rdd\n",
+							"metrics = BinaryClassificationMetrics(predictionAndLabels)\n",
+							"print(\"Area under ROC = %s\" % metrics.areaUnderROC)"
+						],
+						"outputs": [],
+						"execution_count": 10
+					},
+					{
+						"cell_type": "markdown",
+						"source": [
+							"## Evaluate and Visualize\n",
+							"\n",
+							"Plot the actual curve to develop a better understanding of the model.\n",
+							""
+						]
+					},
+					{
+						"cell_type": "code",
+						"source": [
+							"## Plot the ROC curve, no need for pandas as this uses the modelSummary object\n",
+							"modelSummary = lrModel.stages[-1].summary\n",
+							"\n",
+							"plt.plot([0, 1], [0, 1], 'r--')\n",
+							"plt.plot(modelSummary.roc.select('FPR').collect(),\n",
+							"         modelSummary.roc.select('TPR').collect())\n",
+							"plt.xlabel('False Positive Rate')\n",
+							"plt.ylabel('True Positive Rate')\n",
+							"plt.show()"
+						],
+						"outputs": [],
+						"execution_count": null
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/ws1sparkpool1')]",
+			"type": "Microsoft.Synapse/workspaces/bigDataPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"autoPause": {
+					"enabled": true,
+					"delayInMinutes": 15
+				},
+				"autoScale": {
+					"enabled": true,
+					"maxNodeCount": 40,
+					"minNodeCount": 3
+				},
+				"nodeCount": 5,
+				"nodeSize": "Small",
+				"nodeSizeFamily": "MemoryOptimized",
+				"sparkVersion": "2.4",
+				"isComputeIsolationEnabled": false,
+				"sessionLevelPackagesEnabled": false,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "eastus"
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/azulceqma3hoi4tipocws1p1')]",
+			"type": "Microsoft.Synapse/workspaces/sqlPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"collation": "SQL_Latin1_General_CP1_CI_AS",
+				"maxSizeBytes": 263882790666240,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "eastus"
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/default')]",
+			"type": "Microsoft.Synapse/workspaces/managedVirtualNetworks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {},
+			"dependsOn": []
+		}
+	]
+}
