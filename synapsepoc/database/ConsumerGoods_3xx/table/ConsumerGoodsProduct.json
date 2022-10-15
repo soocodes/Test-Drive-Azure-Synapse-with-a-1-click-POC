@@ -1,0 +1,1774 @@
+{
+	"name": "ConsumerGoodsProduct",
+	"properties": {
+		"Name": "ConsumerGoodsProduct",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "ConsumerGoods_3xx"
+		},
+		"Description": "A product is anything that can be offered to a market that might satisfy a want or need by potential customers.    That product is the sum of all physical, psychological, symbolic, and service attributes associated with it.\n\nThere are two basic types of products:\n\n- Tangible (physical)\n- Intangible (non-physical) such as services\n\nA service is a non-material or intangible product - such as professional consultancy, maintenance service, repair service etc.\nEach product has its own benefits, application, brand name, and packaging that gives it its own identity and distinguishing characteristics.\n\nEvery business or organization has business rules that define precisely what a product is.    While we intuitively know what a product is, we must quantify that knowledge and associated business rules with consistent definitions that can be implemented within the organization in strategies and applications.\n\nA product typically goes through five stages of development:\n\n(1) Idea Stage - involving a thorough evaluation of the potential product\n\n(2) Concept Stage - determines customer acceptance by testing and presentation to consumers and distribution channel members.   Specific aspects regarding quality, dependability, reliability, warranty, packaging, service, pricing, terms of sale, sales and distribution channels, advertising and promotions are evaluated.\n\n(3) Product Development Stage - transforms the prototype product into an actual product for mass sale.   This stage requires close interaction between both marketing and manufacturing.\n\n(4) Test Marketing Stage - may or may not be used since it is an expensive and time-consuming process.  Test marketing involves evaluating various product options and alternatives.\n\n(5) Commercialization - It is very expensive to launch a new product so commercialization only applies to those specific products that are actually going to be sold to the market.\n\nProducts tend to be categorized as either:  Industrial goods and consumer goods\n\nIndustrial goods are used to produce other products .\n\nIndustrial goods may be further divided into:\n\n- Raw materials\n- Equipment\n- Pre-built materials \n- Supplies.\n\nConsumer goods are intended for consumption by the general public.\n\nConsumer goods may be further divided into:\n\n- Durable goods\n- Nondurable goods\n- Packaged goods\n\nA product may be a member of a product family or product line.\n\nA product family is a grouping of products or services that are related to each other by common function, functionality, design platform or similar characteristics.\n\nMembers of a product family frequently have many common parts and assemblies.\n\nProduct families are the highest level of grouping for forecasting, capacity planning or related functions.\n\nEx:\nThe Apple Macintosh family of products consists of the product lines:\n- Mac mini\n- MacBook Pro\n- Mac Pro\n\nA product line is a grouping of products that are closely related in usage, functionality or marketing characteristics.\n\nA Product Family typically is created to address one or five functions:\n\n1. To increase profits and not erode the sales of existing products\n\n2. To attract additional Markets or Market Segments\n\n3. To counter competitor's products\n\n4. To fill a gap in an existing Product Family.\n\n5. To promote sales of other products in the family line\n\nLine Depth refers to the number of products in the product line.\n\nLine consistency refers to how closely related the products are that make up the product line.\n\nLine vulnerability refers to the percentage of sales or profits that are derived from only a few products in the product line.\n\nProduct width refers to the number of different product lines sold by a company.\n\nProduct mix refers to the total number of products sold in all product lines.\n\nLine extension refers to the adding of a new product to a line.\n\n\"Trading up or brand leveraging\" refers to adding a product of better quality to a product line than the other products in that line.\n\n\"Trading down\" refers to adding a product of lesser quality to a product line than the other products in that line.\n\nIf a line of products is sold with the same brand name, this is referred to as family branding.\nStrategy and decisions regarding a product line are usually incorporated in a high-level marketing plan addressing product line strategy, sales, channels, distribution channels, pricing and related issues.\nA product-line manager is responsible for a product line and supervises several product managers who are responsible for individual products within the line.\nProduct-line managers typically have the following responsibilities:\n- Expansion and composition of a product line\n- Evaluate the effects of product mixes on the profitability of other items in the line\n- Planning and allocation of resources to individual products in the line\nA product is normally associated with a brand strategy - manufacturer, private or generic.\n\n1. Manufacturer-  or 'national' branding in which the brand is assigned by the manufacturer of the Product.\n\n2. Private - or 'dealer' branding in which the brand is assigned by the retailer or wholesaler of the Product.\n\n3. Generic - in which the Product is not marked with any identification.   Generic brands are a means for manufacturers to increase profits by saving on advertising, packaging or other costs associated with manufacturer or private branding.\n\nA brand is name, term, sign, symbol or design or a combination of these which identify the goods or services and differentiate them from those of competitors'\n\nA Trade mark is a brand or some part of the brand that is given legal protection because it is capable of exclusive appropriation and representation.\n\nManufacturers can use their own brands (known as Manufacturers' brands) or brands of their distributors (Distributors' brands).\n\nManufacturers/ distributors use brand names for a variety of reasons ranging from simple identification purposes to having legal protection for unique features of the products from imitations.\n\nBrands help consumers recognize certain quality parameters. In some cases, brands are just used to endow the product with unique story and character which itself can be a basis for product differentiation.\n\nIndividual brands have their own identity and the corporate or common name is not used to promote its equity.\n\nIndividual branding requires more expensive advertising and brand extensive brand creation investments.  By extension, each new brand does not benefit from the positive perceptions of earlier brands.\n\nBy contrast, family branding has several advantages.\n\nEach new product is quickly associated with the other products and brand in terms of quality and benefits.\n\nReduced or eliminated time for name identification and advertising for name recognition purposes.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ProductId",
+					"Description": "The unique identifier of a Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductName",
+					"Description": "The name of the Product, which normally corresponds to the 'marketing name' of the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductShortDescription",
+					"Description": "The short description of the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductShortDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductDescription",
+					"Description": "The description of the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductInternalName",
+					"Description": "The internal name by which a Product is known.\n\nThis normally approximates the business name by which the public identifies the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductInternalName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductModelName",
+					"Description": "The name of the Product Model.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductModelName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductBaseName",
+					"Description": "The name of the Product, which normally corresponds to the 'marketing name' of the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductBaseName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductCodeName",
+					"Description": "The internal code name by which the Product is known within the company.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductCodeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductIntendedUse",
+					"Description": "The intended use of the product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductIntendedUse"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "IntroductionDate",
+					"Description": "The date that the Product was introduced for sale.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "IntroductionDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "FirstDateManufactured",
+					"Description": "The date that the Product was first manufactured by the Manufacturer.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "FirstDateManufactured"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PlannedAbandonmentDate",
+					"Description": "The planned date to discontinue marketing the product.    \n\nAbandonment is a component in the decline stage of the product's life cycle characterized by a reduced market demand for the product and an increased number of competing products with similar characteristics.\n\nThere are three (3) strategies for abandoning a product:\n\n(1)  Reduced marketing and expenditures to maintain profits.\n\n(2)  Concentrating on the strongest market segments and eliminating the weaker market segments\n\n(3)  Maintain the marketing level until the product is discontinued.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PlannedAbandonmentDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ActualAbandonmentDate",
+					"Description": "The actual date that the marketing of the product was discontinued. \n\nAbandonment is a component in the decline stage of the product's life cycle characterized by a reduced market demand for the product and an increased number of competing products with similar characteristics.\n\nThere are three (3) strategies for abandoning a product:\n\n(1)  Reduced marketing and expenditures to maintain profits.\n\n(2)  Concentrating on the strongest market segments and eliminating the weaker market segments\n\n(3)  Maintain the marketing level until the product is discontinued.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ActualAbandonmentDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GlobalTradeItemNumber",
+					"Description": "The Global Trade Item Number (GTIN) is an identifier for trade items that was developed by GS1.\n\nA GTIN can be assigned to only one brick.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "GlobalTradeItemNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 14,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GtinName",
+					"Description": "A note, comment or additional information regarding the Product GTIN.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "GtinName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EuropeanArticleNumber",
+					"Description": "A 13 digit barcoding standard which is a superset of the original 12-digit Universal Product Code (UPC).\n\naka International Article Number (abbreviation of EAN retained)",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "EuropeanArticleNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 13,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "UniversalProductCode",
+					"Description": "A system that identifies products by type and by manufacturer.  \n\nA UPC consists of eleven (11) digits.  Six (6) indicate the Manufacturer and five (5) digits describe the product.\n\nUPCs appear on product packages as bar codes, which are graphic symbols that are read by optical scanner devices.   \n\nUPCs are assigned by the Uniform Code Council of Dayton, Ohio.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "UniversalProductCode"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 12,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GpcBrickId",
+					"Description": "The unique identifier of a GPC Brick.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "GpcBrickId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ItemElectronicProductCode",
+					"Description": "EPC is the RFID version of the UPC barcode. \nEPC is intended to be used for specific product identification. However, EPC goes beyond UPC by not only identifying the product as an SKU, but also providing access to additional data about the origin and history of the specific units. \nThe EPC tag itself identifies the manufacturer, product, version, and serial number. It's the serial number that takes EPC to the next level. \nThis is the key to data related to specific lots/batches as well as potentially tracking the specific unit's history as it moves through the supply chain.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ItemElectronicProductCode"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 14,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ComponentPartIdentifier",
+					"Description": "The Component / Part Identifier (CPID) is used to identify components or parts that are used in the assembly of a larger item. The CPID is part of the GS1 system of standards.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ComponentPartIdentifier"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 30,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PluCode",
+					"Description": "The PLU or Price Look-Up code is a 4- or 5-digit number that is primarily used on fresh produce items and will typically appear on a small sticker that is applied to an individual piece of fresh produce. \n\nThe PLU code identifies produce items based upon the commodity, variety and size group. \n\nThey are used by supermarkets to make check-out and inventory control easier, faster and more accurate. \n\nThese numbers are assigned by the International Federation for Produce Standards (IFPS)\n\nEx: WHITE FLESH PEACHES\nPLU Code = 4400",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PluCode"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 5,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductNetContent",
+					"Description": "The standard product length.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductNetContent"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "NetContentUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "NetContentUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ResponsibilityCenterId",
+					"Description": "The unique identifier of a Responsibility Center.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ResponsibilityCenterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "StorageInstructions",
+					"Description": "Statements regarding how the product should be stored.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "StorageInstructions"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ShelfLifeDays",
+					"Description": "The amount of time that a product can be stored before it can no longer be safely consumed or sold.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ShelfLifeDays"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ConsumerStorageInstructions",
+					"Description": "Statements regarding how the product should be stored by the consumer.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ConsumerStorageInstructions"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductShippingInstructions",
+					"Description": "Statements regarding how the product should be shipped.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductShippingInstructions"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ConsumerUsageInstructions",
+					"Description": "Statements regarding how the product should be used by the consumer.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ConsumerUsageInstructions"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "HealthClaimDescription",
+					"Description": "A health claim regarding the product as per regulations of the target market.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "HealthClaimDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MarketingMessageDescription",
+					"Description": "A market message that is present on the packaging of the product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MarketingMessageDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BundledProductIndicator",
+					"Description": "Indicates whether a Product is comprised of a bundle of other Products.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "BundledProductIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "InformationLabelText",
+					"Description": "The label text that identifies the care, use, preparation and handling or the product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "InformationLabelText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DescriptiveLabelText",
+					"Description": "The label text that describes significant characteristics and benefits.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "DescriptiveLabelText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarningInformationText",
+					"Description": "The text of the warning label, if any, appearing upon the product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "WarningInformationText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GradeLabelText",
+					"Description": "The label text that identifies Product quality with letters, number or conditions.\n\nExamples:\n\n-  Grade A\n-  Prime\n-  #1",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "GradeLabelText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GovernmentWarningLabelText",
+					"Description": "The US Government (or foreign government) label text that addressing the US legal requirements of the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "GovernmentWarningLabelText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PatentNumber",
+					"Description": "The patent that is associated with the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PatentNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 12,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PatentDate",
+					"Description": "The date that the Patent was granted.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PatentDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PatentExpirationDate",
+					"Description": "The date that the patent is scheduled to expire.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PatentExpirationDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "Trademark",
+					"Description": "A 'trademark' is a brand name or brand mark that is given legal protection.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "Trademark"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "binary",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "binary"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductLogo",
+					"Description": "A design, symbol or series of words that identifies the product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductLogo"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "binary",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "binary"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductSymbol",
+					"Description": "A symbol by which the product is known.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductSymbol"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "binary",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "binary"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CopyrightNumber",
+					"Description": "The unique identifier (number) of the copyright granted.\n\nA copyright is legal protection given to a work so that it can only be published or sold by the copyright holder.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "CopyrightNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 18,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CopyrightDate",
+					"Description": "The date that the copyright was granted.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "CopyrightDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductLicenserName",
+					"Description": "The name of the company that receives a flat fee or royalty for selling the rights to use a trademark, Patent, manufacturing right or process for the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductLicenserName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EligibleForExportIndicator",
+					"Description": "Indicates that the product is eligible for export to foreign countries without restriction.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "EligibleForExportIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductExportRestrictionIndicator",
+					"Description": "Indicates that exportation of the product is restricted.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductExportRestrictionIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductExportRestrictionStartDate",
+					"Description": "The period start date for which the associated restriction is in effect.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductExportRestrictionStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductExportRestrictionEndDate",
+					"Description": "The period end date for which the associated restriction is in effect.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductExportRestrictionEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductExportRestrictionDescription",
+					"Description": "A description or statement defining the export restriction(s) placed upon the Product.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductExportRestrictionDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BaseProductQuantity",
+					"Description": "The number of base product items contained in the product packaging.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "BaseProductQuantity"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductLength",
+					"Description": "The standard product length.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductLength"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductPlanogramLength",
+					"Description": "The standard product length.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductPlanogramLength"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductLengthUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductLengthUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductWidth",
+					"Description": "The standard product width.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductWidth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductPlanogramWidth",
+					"Description": "The standard product width.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductPlanogramWidth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductWidthUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductWidthUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductHeight",
+					"Description": "The standard product height.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductHeight"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductPlanogramHeight",
+					"Description": "The standard product height.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductPlanogramHeight"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductHeightUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductHeightUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductVolume",
+					"Description": "The standard product volume.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductVolume"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductVolumeUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductVolumeUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductNetWeight",
+					"Description": "The net product weight.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductNetWeight"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductNetWeightUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductNetWeightUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductGrossWeight",
+					"Description": "The gross product weight.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductGrossWeight"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductGrossWeightUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductGrossWeightUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductDrainedWeight",
+					"Description": "The drained product weight.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductDrainedWeight"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductDrainedWeightUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductDrainedWeightUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MinimumStorageTemperature",
+					"Description": "The minimum temperature at which the product may be stored.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MinimumStorageTemperature"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MinimumStorageTemperatureUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MinimumStorageTemperatureUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MaximumStorageTemperature",
+					"Description": "The maximum temperature at which the product may be stored.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MaximumStorageTemperature"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MaximumStorageTemperatureUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MaximumStorageTemperatureUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MinimumStorageHumidity",
+					"Description": "The minimum humidity that the product may be stored at.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MinimumStorageHumidity"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MinimumStorageHumidityUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MinimumStorageHumidityUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MaximumStorageHumidity",
+					"Description": "The maximum humidity that the product may be stored at.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MaximumStorageHumidity"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MaximumStorageHumidityUomId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "MaximumStorageHumidityUomId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ReturnPolicyStatement",
+					"Description": "A statement detailing the product return policy.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ReturnPolicyStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ReturnPolicyPeriodInDays",
+					"Description": "The period in days allowed under the associated return policy.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ReturnPolicyPeriodInDays"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ReplacementPolicyStatement",
+					"Description": "A statement detailing the product replacement policy.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ReplacementPolicyStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ReplacementPeriodInDays",
+					"Description": "The period in days allowed under the associated replacement policy.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ReplacementPeriodInDays"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ExchangePolicyStatement",
+					"Description": "A statement detailing the product exchange policy.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ExchangePolicyStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ExchangePolicyPeriodInDays",
+					"Description": "The period in days allowed under the associated exchange policy.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ExchangePolicyPeriodInDays"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductMustBeDeliveredDaysPriorToExpirationDate",
+					"Description": "The number of days prior to the expiration date of the product that the product must be delivered to the an agreed upon point in the distribution system.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductMustBeDeliveredDaysPriorToExpirationDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarrantyId",
+					"Description": "The unique identifier of a Warranty.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "WarrantyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ItemSku",
+					"Description": "The Stock Keeping Unit identifier, which is typically used for inventory-related activities.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ItemSku"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 40,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PrimaryBrandId",
+					"Description": "The unique identifier of a Brand.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PrimaryBrandId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ProductTypeId",
+					"Description": "The unique identifier of a Product Type.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ProductTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PackageTypeId",
+					"Description": "The unique identifier of a Package Type.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PackageTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PrimaryCountryOfOriginCountryId",
+					"Description": "The unique identifier of the Country.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PrimaryCountryOfOriginCountryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GeographicAreaOfOriginGeographicAreaId",
+					"Description": "The unique identifier of a Geographic Area.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "GeographicAreaOfOriginGeographicAreaId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PrimaryColorId",
+					"Description": "The unique identifier of a color.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "PrimaryColorId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "FlavorTypeId",
+					"Description": "The unique identifier of a Flavor Type.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "FlavorTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ScentTypeId",
+					"Description": "The unique identifier of a Scent Type.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "ScentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "SuitableAgeRatingId",
+					"Description": "The unique identifier of a suitable age rating.",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "SuitableAgeRatingId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "SeasonalUsageId",
+					"Description": "The unique identifier of a seasonal usage for the associated product.\n\nEx:\n- Summer\n- Fall\n- Winter\n- Spring\n- All seasons",
+					"BaseAttributeReference": {
+						"Entity": "ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct",
+						"Name": "SeasonalUsageId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/ConsumerGoodsProduct",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/ConsumerGoodsProduct",
+				"Properties": {
+					"LinkedServiceName": "azulceqma3hoi4tipocws1-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ProductId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductId\"},\"ProductName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductName\"},\"ProductShortDescription\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductShortDescription\"},\"ProductDescription\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductDescription\"},\"ProductInternalName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductInternalName\"},\"ProductModelName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductModelName\"},\"ProductBaseName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductBaseName\"},\"ProductCodeName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductCodeName\"},\"ProductIntendedUse\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductIntendedUse\"},\"IntroductionDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"IntroductionDate\"},\"FirstDateManufactured\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"FirstDateManufactured\"},\"PlannedAbandonmentDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PlannedAbandonmentDate\"},\"ActualAbandonmentDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ActualAbandonmentDate\"},\"GlobalTradeItemNumber\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GlobalTradeItemNumber\"},\"GtinName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GtinName\"},\"EuropeanArticleNumber\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"EuropeanArticleNumber\"},\"UniversalProductCode\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"UniversalProductCode\"},\"GpcBrickId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GpcBrickId\"},\"ItemElectronicProductCode\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ItemElectronicProductCode\"},\"ComponentPartIdentifier\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ComponentPartIdentifier\"},\"PluCode\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PluCode\"},\"ProductNetContent\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductNetContent\"},\"NetContentUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"NetContentUomId\"},\"ResponsibilityCenterId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ResponsibilityCenterId\"},\"StorageInstructions\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"StorageInstructions\"},\"ShelfLifeDays\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ShelfLifeDays\"},\"ConsumerStorageInstructions\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ConsumerStorageInstructions\"},\"ProductShippingInstructions\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductShippingInstructions\"},\"ConsumerUsageInstructions\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ConsumerUsageInstructions\"},\"HealthClaimDescription\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"HealthClaimDescription\"},\"MarketingMessageDescription\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MarketingMessageDescription\"},\"BundledProductIndicator\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"BundledProductIndicator\"},\"InformationLabelText\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"InformationLabelText\"},\"DescriptiveLabelText\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"DescriptiveLabelText\"},\"WarningInformationText\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"WarningInformationText\"},\"GradeLabelText\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GradeLabelText\"},\"GovernmentWarningLabelText\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GovernmentWarningLabelText\"},\"PatentNumber\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PatentNumber\"},\"PatentDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PatentDate\"},\"PatentExpirationDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PatentExpirationDate\"},\"Trademark\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"Trademark\"},\"ProductLogo\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLogo\"},\"ProductSymbol\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductSymbol\"},\"CopyrightNumber\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"CopyrightNumber\"},\"CopyrightDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"CopyrightDate\"},\"ProductLicenserName\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLicenserName\"},\"EligibleForExportIndicator\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"EligibleForExportIndicator\"},\"ProductExportRestrictionIndicator\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionIndicator\"},\"ProductExportRestrictionStartDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionStartDate\"},\"ProductExportRestrictionEndDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionEndDate\"},\"ProductExportRestrictionDescription\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionDescription\"},\"BaseProductQuantity\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"BaseProductQuantity\"},\"ProductLength\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLength\"},\"ProductPlanogramLength\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductPlanogramLength\"},\"ProductLengthUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLengthUomId\"},\"ProductWidth\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductWidth\"},\"ProductPlanogramWidth\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductPlanogramWidth\"},\"ProductWidthUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductWidthUomId\"},\"ProductHeight\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductHeight\"},\"ProductPlanogramHeight\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductPlanogramHeight\"},\"ProductHeightUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductHeightUomId\"},\"ProductVolume\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductVolume\"},\"ProductVolumeUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductVolumeUomId\"},\"ProductNetWeight\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductNetWeight\"},\"ProductNetWeightUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductNetWeightUomId\"},\"ProductGrossWeight\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductGrossWeight\"},\"ProductGrossWeightUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductGrossWeightUomId\"},\"ProductDrainedWeight\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductDrainedWeight\"},\"ProductDrainedWeightUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductDrainedWeightUomId\"},\"MinimumStorageTemperature\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageTemperature\"},\"MinimumStorageTemperatureUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageTemperatureUomId\"},\"MaximumStorageTemperature\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageTemperature\"},\"MaximumStorageTemperatureUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageTemperatureUomId\"},\"MinimumStorageHumidity\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageHumidity\"},\"MinimumStorageHumidityUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageHumidityUomId\"},\"MaximumStorageHumidity\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageHumidity\"},\"MaximumStorageHumidityUomId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageHumidityUomId\"},\"ReturnPolicyStatement\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReturnPolicyStatement\"},\"ReturnPolicyPeriodInDays\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReturnPolicyPeriodInDays\"},\"ReplacementPolicyStatement\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReplacementPolicyStatement\"},\"ReplacementPeriodInDays\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReplacementPeriodInDays\"},\"ExchangePolicyStatement\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ExchangePolicyStatement\"},\"ExchangePolicyPeriodInDays\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ExchangePolicyPeriodInDays\"},\"ProductMustBeDeliveredDaysPriorToExpirationDate\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductMustBeDeliveredDaysPriorToExpirationDate\"},\"WarrantyId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"WarrantyId\"},\"ItemSku\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ItemSku\"},\"PrimaryBrandId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PrimaryBrandId\"},\"ProductTypeId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductTypeId\"},\"PackageTypeId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PackageTypeId\"},\"PrimaryCountryOfOriginCountryId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PrimaryCountryOfOriginCountryId\"},\"GeographicAreaOfOriginGeographicAreaId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GeographicAreaOfOriginGeographicAreaId\"},\"PrimaryColorId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PrimaryColorId\"},\"FlavorTypeId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"FlavorTypeId\"},\"ScentTypeId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ScentTypeId\"},\"SuitableAgeRatingId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"SuitableAgeRatingId\"},\"SeasonalUsageId\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"SeasonalUsageId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"ConsumerGoodsProduct\",\"path\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\"},\"description\":\"A product is anything that can be offered to a market that might satisfy a want or need by potential customers.    That product is the sum of all physical, psychological, symbolic, and service attributes associated with it.\\n\\nThere are two basic types of products:\\n\\n- Tangible (physical)\\n- Intangible (non-physical) such as services\\n\\nA service is a non-material or intangible product - such as professional consultancy, maintenance service, repair service etc.\\nEach product has its own benefits, application, brand name, and packaging that gives it its own identity and distinguishing characteristics.\\n\\nEvery business or organization has business rules that define precisely what a product is.    While we intuitively know what a product is, we must quantify that knowledge and associated business rules with consistent definitions that can be implemented within the organization in strategies and applications.\\n\\nA product typically goes through five stages of development:\\n\\n(1) Idea Stage - involving a thorough evaluation of the potential product\\n\\n(2) Concept Stage - determines customer acceptance by testing and presentation to consumers and distribution channel members.   Specific aspects regarding quality, dependability, reliability, warranty, packaging, service, pricing, terms of sale, sales and distribution channels, advertising and promotions are evaluated.\\n\\n(3) Product Development Stage - transforms the prototype product into an actual product for mass sale.   This stage requires close interaction between both marketing and manufacturing.\\n\\n(4) Test Marketing Stage - may or may not be used since it is an expensive and time-consuming process.  Test marketing involves evaluating various product options and alternatives.\\n\\n(5) Commercialization - It is very expensive to launch a new product so commercialization only applies to those specific products that are actually going to be sold to the market.\\n\\nProducts tend to be categorized as either:  Industrial goods and consumer goods\\n\\nIndustrial goods are used to produce other products .\\n\\nIndustrial goods may be further divided into:\\n\\n- Raw materials\\n- Equipment\\n- Pre-built materials \\n- Supplies.\\n\\nConsumer goods are intended for consumption by the general public.\\n\\nConsumer goods may be further divided into:\\n\\n- Durable goods\\n- Nondurable goods\\n- Packaged goods\\n\\nA product may be a member of a product family or product line.\\n\\nA product family is a grouping of products or services that are related to each other by common function, functionality, design platform or similar characteristics.\\n\\nMembers of a product family frequently have many common parts and assemblies.\\n\\nProduct families are the highest level of grouping for forecasting, capacity planning or related functions.\\n\\nEx:\\nThe Apple Macintosh family of products consists of the product lines:\\n- Mac mini\\n- MacBook Pro\\n- Mac Pro\\n\\nA product line is a grouping of products that are closely related in usage, functionality or marketing characteristics.\\n\\nA Product Family typically is created to address one or five functions:\\n\\n1. To increase profits and not erode the sales of existing products\\n\\n2. To attract additional Markets or Market Segments\\n\\n3. To counter competitor's products\\n\\n4. To fill a gap in an existing Product Family.\\n\\n5. To promote sales of other products in the family line\\n\\nLine Depth refers to the number of products in the product line.\\n\\nLine consistency refers to how closely related the products are that make up the product line.\\n\\nLine vulnerability refers to the percentage of sales or profits that are derived from only a few products in the product line.\\n\\nProduct width refers to the number of different product lines sold by a company.\\n\\nProduct mix refers to the total number of products sold in all product lines.\\n\\nLine extension refers to the adding of a new product to a line.\\n\\n\\\"Trading up or brand leveraging\\\" refers to adding a product of better quality to a product line than the other products in that line.\\n\\n\\\"Trading down\\\" refers to adding a product of lesser quality to a product line than the other products in that line.\\n\\nIf a line of products is sold with the same brand name, this is referred to as family branding.\\nStrategy and decisions regarding a product line are usually incorporated in a high-level marketing plan addressing product line strategy, sales, channels, distribution channels, pricing and related issues.\\nA product-line manager is responsible for a product line and supervises several product managers who are responsible for individual products within the line.\\nProduct-line managers typically have the following responsibilities:\\n- Expansion and composition of a product line\\n- Evaluate the effects of product mixes on the profitability of other items in the line\\n- Planning and allocation of resources to individual products in the line\\nA product is normally associated with a brand strategy - manufacturer, private or generic.\\n\\n1. Manufacturer-  or 'national' branding in which the brand is assigned by the manufacturer of the Product.\\n\\n2. Private - or 'dealer' branding in which the brand is assigned by the retailer or wholesaler of the Product.\\n\\n3. Generic - in which the Product is not marked with any identification.   Generic brands are a means for manufacturers to increase profits by saving on advertising, packaging or other costs associated with manufacturer or private branding.\\n\\nA brand is name, term, sign, symbol or design or a combination of these which identify the goods or services and differentiate them from those of competitors'\\n\\nA Trade mark is a brand or some part of the brand that is given legal protection because it is capable of exclusive appropriation and representation.\\n\\nManufacturers can use their own brands (known as Manufacturers' brands) or brands of their distributors (Distributors' brands).\\n\\nManufacturers/ distributors use brand names for a variety of reasons ranging from simple identification purposes to having legal protection for unique features of the products from imitations.\\n\\nBrands help consumers recognize certain quality parameters. In some cases, brands are just used to endow the product with unique story and character which itself can be a basis for product differentiation.\\n\\nIndividual brands have their own identity and the corporate or common name is not used to promote its equity.\\n\\nIndividual branding requires more expensive advertising and brand extensive brand creation investments.  By extension, each new brand does not benefit from the positive perceptions of earlier brands.\\n\\nBy contrast, family branding has several advantages.\\n\\nEach new product is quickly associated with the other products and brand in terms of quality and benefits.\\n\\nReduced or eliminated time for name identification and advertising for name recognition purposes.\",\"primaryKey\":[\"ProductId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Product.\",\"isNullable\":false,\"name\":\"ProductId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Product, which normally corresponds to the 'marketing name' of the Product.\",\"isNullable\":true,\"name\":\"ProductName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductShortDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The short description of the Product.\",\"isNullable\":true,\"name\":\"ProductShortDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Product.\",\"isNullable\":true,\"name\":\"ProductDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductInternalName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The internal name by which a Product is known.\\n\\nThis normally approximates the business name by which the public identifies the Product.\",\"isNullable\":true,\"name\":\"ProductInternalName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductModelName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Product Model.\",\"isNullable\":true,\"name\":\"ProductModelName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductBaseName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Product, which normally corresponds to the 'marketing name' of the Product.\",\"isNullable\":true,\"name\":\"ProductBaseName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductCodeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The internal code name by which the Product is known within the company.\",\"isNullable\":true,\"name\":\"ProductCodeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductIntendedUse\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The intended use of the product.\",\"isNullable\":true,\"name\":\"ProductIntendedUse\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"IntroductionDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the Product was introduced for sale.\",\"isNullable\":true,\"name\":\"IntroductionDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"FirstDateManufactured\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the Product was first manufactured by the Manufacturer.\",\"isNullable\":true,\"name\":\"FirstDateManufactured\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PlannedAbandonmentDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The planned date to discontinue marketing the product.    \\n\\nAbandonment is a component in the decline stage of the product's life cycle characterized by a reduced market demand for the product and an increased number of competing products with similar characteristics.\\n\\nThere are three (3) strategies for abandoning a product:\\n\\n(1)  Reduced marketing and expenditures to maintain profits.\\n\\n(2)  Concentrating on the strongest market segments and eliminating the weaker market segments\\n\\n(3)  Maintain the marketing level until the product is discontinued.\",\"isNullable\":true,\"name\":\"PlannedAbandonmentDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ActualAbandonmentDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The actual date that the marketing of the product was discontinued. \\n\\nAbandonment is a component in the decline stage of the product's life cycle characterized by a reduced market demand for the product and an increased number of competing products with similar characteristics.\\n\\nThere are three (3) strategies for abandoning a product:\\n\\n(1)  Reduced marketing and expenditures to maintain profits.\\n\\n(2)  Concentrating on the strongest market segments and eliminating the weaker market segments\\n\\n(3)  Maintain the marketing level until the product is discontinued.\",\"isNullable\":true,\"name\":\"ActualAbandonmentDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GlobalTradeItemNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":14,\"description\":\"The Global Trade Item Number (GTIN) is an identifier for trade items that was developed by GS1.\\n\\nA GTIN can be assigned to only one brick.\",\"isNullable\":true,\"scale\":0,\"name\":\"GlobalTradeItemNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GtinName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"A note, comment or additional information regarding the Product GTIN.\",\"isNullable\":true,\"name\":\"GtinName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"EuropeanArticleNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":13,\"description\":\"A 13 digit barcoding standard which is a superset of the original 12-digit Universal Product Code (UPC).\\n\\naka International Article Number (abbreviation of EAN retained)\",\"isNullable\":true,\"scale\":0,\"name\":\"EuropeanArticleNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"UniversalProductCode\"},\"dataType\":\"decimal\",\"dataTypeLength\":12,\"description\":\"A system that identifies products by type and by manufacturer.  \\n\\nA UPC consists of eleven (11) digits.  Six (6) indicate the Manufacturer and five (5) digits describe the product.\\n\\nUPCs appear on product packages as bar codes, which are graphic symbols that are read by optical scanner devices.   \\n\\nUPCs are assigned by the Uniform Code Council of Dayton, Ohio.\",\"isNullable\":true,\"scale\":0,\"name\":\"UniversalProductCode\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GpcBrickId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a GPC Brick.\",\"isNullable\":true,\"name\":\"GpcBrickId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ItemElectronicProductCode\"},\"dataType\":\"decimal\",\"dataTypeLength\":14,\"description\":\"EPC is the RFID version of the UPC barcode. \\nEPC is intended to be used for specific product identification. However, EPC goes beyond UPC by not only identifying the product as an SKU, but also providing access to additional data about the origin and history of the specific units. \\nThe EPC tag itself identifies the manufacturer, product, version, and serial number. It's the serial number that takes EPC to the next level. \\nThis is the key to data related to specific lots/batches as well as potentially tracking the specific unit's history as it moves through the supply chain.\",\"isNullable\":true,\"scale\":0,\"name\":\"ItemElectronicProductCode\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ComponentPartIdentifier\"},\"dataType\":\"string\",\"dataTypeLength\":30,\"description\":\"The Component / Part Identifier (CPID) is used to identify components or parts that are used in the assembly of a larger item. The CPID is part of the GS1 system of standards.\",\"isNullable\":true,\"name\":\"ComponentPartIdentifier\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PluCode\"},\"dataType\":\"decimal\",\"dataTypeLength\":5,\"description\":\"The PLU or Price Look-Up code is a 4- or 5-digit number that is primarily used on fresh produce items and will typically appear on a small sticker that is applied to an individual piece of fresh produce. \\n\\nThe PLU code identifies produce items based upon the commodity, variety and size group. \\n\\nThey are used by supermarkets to make check-out and inventory control easier, faster and more accurate. \\n\\nThese numbers are assigned by the International Federation for Produce Standards (IFPS)\\n\\nEx: WHITE FLESH PEACHES\\nPLU Code = 4400\",\"isNullable\":true,\"scale\":0,\"name\":\"PluCode\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductNetContent\"},\"dataType\":\"integer\",\"description\":\"The standard product length.\",\"isNullable\":true,\"name\":\"ProductNetContent\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"NetContentUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"NetContentUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ResponsibilityCenterId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Responsibility Center.\",\"isNullable\":false,\"name\":\"ResponsibilityCenterId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"StorageInstructions\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Statements regarding how the product should be stored.\",\"isNullable\":true,\"name\":\"StorageInstructions\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ShelfLifeDays\"},\"dataType\":\"integer\",\"description\":\"The amount of time that a product can be stored before it can no longer be safely consumed or sold.\",\"isNullable\":true,\"name\":\"ShelfLifeDays\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ConsumerStorageInstructions\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Statements regarding how the product should be stored by the consumer.\",\"isNullable\":true,\"name\":\"ConsumerStorageInstructions\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductShippingInstructions\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Statements regarding how the product should be shipped.\",\"isNullable\":true,\"name\":\"ProductShippingInstructions\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ConsumerUsageInstructions\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Statements regarding how the product should be used by the consumer.\",\"isNullable\":true,\"name\":\"ConsumerUsageInstructions\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"HealthClaimDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A health claim regarding the product as per regulations of the target market.\",\"isNullable\":true,\"name\":\"HealthClaimDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MarketingMessageDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A market message that is present on the packaging of the product.\",\"isNullable\":true,\"name\":\"MarketingMessageDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"BundledProductIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates whether a Product is comprised of a bundle of other Products.\",\"isNullable\":true,\"name\":\"BundledProductIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"InformationLabelText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The label text that identifies the care, use, preparation and handling or the product.\",\"isNullable\":true,\"name\":\"InformationLabelText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"DescriptiveLabelText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The label text that describes significant characteristics and benefits.\",\"isNullable\":true,\"name\":\"DescriptiveLabelText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"WarningInformationText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The text of the warning label, if any, appearing upon the product.\",\"isNullable\":true,\"name\":\"WarningInformationText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GradeLabelText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The label text that identifies Product quality with letters, number or conditions.\\n\\nExamples:\\n\\n-  Grade A\\n-  Prime\\n-  #1\",\"isNullable\":true,\"name\":\"GradeLabelText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GovernmentWarningLabelText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The US Government (or foreign government) label text that addressing the US legal requirements of the Product.\",\"isNullable\":true,\"name\":\"GovernmentWarningLabelText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PatentNumber\"},\"dataType\":\"string\",\"dataTypeLength\":12,\"description\":\"The patent that is associated with the Product.\",\"isNullable\":true,\"name\":\"PatentNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PatentDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the Patent was granted.\",\"isNullable\":true,\"name\":\"PatentDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PatentExpirationDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the patent is scheduled to expire.\",\"isNullable\":true,\"name\":\"PatentExpirationDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"Trademark\"},\"dataType\":\"binary\",\"description\":\"A 'trademark' is a brand name or brand mark that is given legal protection.\",\"isNullable\":true,\"name\":\"Trademark\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLogo\"},\"dataType\":\"binary\",\"description\":\"A design, symbol or series of words that identifies the product.\",\"isNullable\":true,\"name\":\"ProductLogo\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductSymbol\"},\"dataType\":\"binary\",\"description\":\"A symbol by which the product is known.\",\"isNullable\":true,\"name\":\"ProductSymbol\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"CopyrightNumber\"},\"dataType\":\"string\",\"dataTypeLength\":18,\"description\":\"The unique identifier (number) of the copyright granted.\\n\\nA copyright is legal protection given to a work so that it can only be published or sold by the copyright holder.\",\"isNullable\":true,\"name\":\"CopyrightNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"CopyrightDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the copyright was granted.\",\"isNullable\":true,\"name\":\"CopyrightDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLicenserName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the company that receives a flat fee or royalty for selling the rights to use a trademark, Patent, manufacturing right or process for the Product.\",\"isNullable\":true,\"name\":\"ProductLicenserName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"EligibleForExportIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates that the product is eligible for export to foreign countries without restriction.\",\"isNullable\":true,\"name\":\"EligibleForExportIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates that exportation of the product is restricted.\",\"isNullable\":true,\"name\":\"ProductExportRestrictionIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated restriction is in effect.\",\"isNullable\":true,\"name\":\"ProductExportRestrictionStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated restriction is in effect.\",\"isNullable\":true,\"name\":\"ProductExportRestrictionEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductExportRestrictionDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A description or statement defining the export restriction(s) placed upon the Product.\",\"isNullable\":true,\"name\":\"ProductExportRestrictionDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"BaseProductQuantity\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The number of base product items contained in the product packaging.\",\"isNullable\":true,\"scale\":2,\"name\":\"BaseProductQuantity\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLength\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product length.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductLength\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductPlanogramLength\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product length.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductPlanogramLength\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductLengthUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductLengthUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductWidth\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product width.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductWidth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductPlanogramWidth\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product width.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductPlanogramWidth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductWidthUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductWidthUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductHeight\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product height.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductHeight\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductPlanogramHeight\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product height.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductPlanogramHeight\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductHeightUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductHeightUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductVolume\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard product volume.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductVolume\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductVolumeUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductVolumeUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductNetWeight\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The net product weight.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductNetWeight\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductNetWeightUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductNetWeightUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductGrossWeight\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The gross product weight.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductGrossWeight\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductGrossWeightUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductGrossWeightUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductDrainedWeight\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The drained product weight.\",\"isNullable\":true,\"scale\":8,\"name\":\"ProductDrainedWeight\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductDrainedWeightUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"ProductDrainedWeightUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageTemperature\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The minimum temperature at which the product may be stored.\",\"isNullable\":true,\"scale\":8,\"name\":\"MinimumStorageTemperature\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageTemperatureUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"MinimumStorageTemperatureUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageTemperature\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The maximum temperature at which the product may be stored.\",\"isNullable\":true,\"scale\":8,\"name\":\"MaximumStorageTemperature\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageTemperatureUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"MaximumStorageTemperatureUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageHumidity\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The minimum humidity that the product may be stored at.\",\"isNullable\":true,\"scale\":8,\"name\":\"MinimumStorageHumidity\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MinimumStorageHumidityUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"MinimumStorageHumidityUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageHumidity\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The maximum humidity that the product may be stored at.\",\"isNullable\":true,\"scale\":8,\"name\":\"MaximumStorageHumidity\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"MaximumStorageHumidityUomId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"MaximumStorageHumidityUomId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReturnPolicyStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A statement detailing the product return policy.\",\"isNullable\":true,\"name\":\"ReturnPolicyStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReturnPolicyPeriodInDays\"},\"dataType\":\"integer\",\"description\":\"The period in days allowed under the associated return policy.\",\"isNullable\":true,\"name\":\"ReturnPolicyPeriodInDays\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReplacementPolicyStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A statement detailing the product replacement policy.\",\"isNullable\":true,\"name\":\"ReplacementPolicyStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ReplacementPeriodInDays\"},\"dataType\":\"integer\",\"description\":\"The period in days allowed under the associated replacement policy.\",\"isNullable\":true,\"name\":\"ReplacementPeriodInDays\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ExchangePolicyStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A statement detailing the product exchange policy.\",\"isNullable\":true,\"name\":\"ExchangePolicyStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ExchangePolicyPeriodInDays\"},\"dataType\":\"integer\",\"description\":\"The period in days allowed under the associated exchange policy.\",\"isNullable\":true,\"name\":\"ExchangePolicyPeriodInDays\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductMustBeDeliveredDaysPriorToExpirationDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The number of days prior to the expiration date of the product that the product must be delivered to the an agreed upon point in the distribution system.\",\"isNullable\":true,\"name\":\"ProductMustBeDeliveredDaysPriorToExpirationDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"WarrantyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Warranty.\",\"isNullable\":true,\"name\":\"WarrantyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ItemSku\"},\"dataType\":\"string\",\"dataTypeLength\":40,\"description\":\"The Stock Keeping Unit identifier, which is typically used for inventory-related activities.\",\"isNullable\":true,\"name\":\"ItemSku\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PrimaryBrandId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Brand.\",\"isNullable\":true,\"name\":\"PrimaryBrandId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ProductTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Product Type.\",\"isNullable\":true,\"name\":\"ProductTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PackageTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Package Type.\",\"isNullable\":true,\"name\":\"PackageTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PrimaryCountryOfOriginCountryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Country.\",\"isNullable\":true,\"name\":\"PrimaryCountryOfOriginCountryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"GeographicAreaOfOriginGeographicAreaId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Geographic Area.\",\"isNullable\":false,\"name\":\"GeographicAreaOfOriginGeographicAreaId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"PrimaryColorId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a color.\",\"isNullable\":true,\"name\":\"PrimaryColorId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"FlavorTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Flavor Type.\",\"isNullable\":true,\"name\":\"FlavorTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"ScentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Scent Type.\",\"isNullable\":true,\"name\":\"ScentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"SuitableAgeRatingId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a suitable age rating.\",\"isNullable\":true,\"name\":\"SuitableAgeRatingId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ConsumerGoodsProduct.cdm.json/ConsumerGoodsProduct\",\"name\":\"SeasonalUsageId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a seasonal usage for the associated product.\\n\\nEx:\\n- Summer\\n- Fall\\n- Winter\\n- Spring\\n- All seasons\",\"isNullable\":true,\"name\":\"SeasonalUsageId\"}]}}}",
+			"Description": "A product is anything that can be offered to a market that might satisfy a want or need by potential customers.    That product is the sum of all physical, psychological, symbolic, and service attributes associated with it.\n\nThere are two basic types of products:\n\n- Tangible (physical)\n- Intangible (non-physical) such as services\n\nA service is a non-material or intangible product - such as professional consultancy, maintenance service, repair service etc.\nEach product has its own benefits, application, brand name, and packaging that gives it its own identity and distinguishing characteristics.\n\nEvery business or organization has business rules that define precisely what a product is.    While we intuitively know what a product is, we must quantify that knowledge and associated business rules with consistent definitions that can be implemented within the organization in strategies and applications.\n\nA product typically goes through five stages of development:\n\n(1) Idea Stage - involving a thorough evaluation of the potential product\n\n(2) Concept Stage - determines customer acceptance by testing and presentation to consumers and distribution channel members.   Specific aspects regarding quality, dependability, reliability, warranty, packaging, service, pricing, terms of sale, sales and distribution channels, advertising and promotions are evaluated.\n\n(3) Product Development Stage - transforms the prototype product into an actual product for mass sale.   This stage requires close interaction between both marketing and manufacturing.\n\n(4) Test Marketing Stage - may or may not be used since it is an expensive and time-consuming process.  Test marketing involves evaluating various product options and alternatives.\n\n(5) Commercialization - It is very expensive to launch a new product so commercialization only applies to those specific products that are actually going to be sold to the market.\n\nProducts tend to be categorized as either:  Industrial goods and consumer goods\n\nIndustrial goods are used to produce other products .\n\nIndustrial goods may be further divided into:\n\n- Raw materials\n- Equipment\n- Pre-built materials \n- Supplies.\n\nConsumer goods are intended for consumption by the general public.\n\nConsumer goods may be further divided into:\n\n- Durable goods\n- Nondurable goods\n- Packaged goods\n\nA product may be a member of a product family or product line.\n\nA product family is a grouping of products or services that are related to each other by common function, functionality, design platform or similar characteristics.\n\nMembers of a product family frequently have many common parts and assemblies.\n\nProduct families are the highest level of grouping for forecasting, capacity planning or related functions.\n\nEx:\nThe Apple Macintosh family of products consists of the product lines:\n- Mac mini\n- MacBook Pro\n- Mac Pro\n\nA product line is a grouping of products that are closely related in usage, functionality or marketing characteristics.\n\nA Product Family typically is created to address one or five functions:\n\n1. To increase profits and not erode the sales of existing products\n\n2. To attract additional Markets or Market Segments\n\n3. To counter competitor's products\n\n4. To fill a gap in an existing Product Family.\n\n5. To promote sales of other products in the family line\n\nLine Depth refers to the number of products in the product line.\n\nLine consistency refers to how closely related the products are that make up the product line.\n\nLine vulnerability refers to the percentage of sales or profits that are derived from only a few products in the product line.\n\nProduct width refers to the number of different product lines sold by a company.\n\nProduct mix refers to the total number of products sold in all product lines.\n\nLine extension refers to the adding of a new product to a line.\n\n\"Trading up or brand leveraging\" refers to adding a product of better quality to a product line than the other products in that line.\n\n\"Trading down\" refers to adding a product of lesser quality to a product line than the other products in that line.\n\nIf a line of products is sold with the same brand name, this is referred to as family branding.\nStrategy and decisions regarding a product line are usually incorporated in a high-level marketing plan addressing product line strategy, sales, channels, distribution channels, pricing and related issues.\nA product-line manager is responsible for a product line and supervises several product managers who are responsible for individual products within the line.\nProduct-line managers typically have the following responsibilities:\n- Expansion and composition of a product line\n- Evaluate the effects of product mixes on the profitability of other items in the line\n- Planning and allocation of resources to individual products in the line\nA product is normally associated with a brand strategy - manufacturer, private or generic.\n\n1. Manufacturer-  or 'national' branding in which the brand is assigned by the manufacturer of the Product.\n\n2. Private - or 'dealer' branding in which the brand is assigned by the retailer or wholesaler of the Product.\n\n3. Generic - in which the Product is not marked with any identification.   Generic brands are a means for manufacturers to increase profits by saving on advertising, packaging or other costs associated with manufacturer or private branding.\n\nA brand is name, term, sign, symbol or design or a combination of these which identify the goods or services and differentiate them from those of competitors'\n\nA Trade mark is a brand or some part of the brand that is given legal protection because it is capable of exclusive appropriation and representation.\n\nManufacturers can use their own brands (known as Manufacturers' brands) or brands of their distributors (Distributors' brands).\n\nManufacturers/ distributors use brand names for a variety of reasons ranging from simple identification purposes to having legal protection for unique features of the products from imitations.\n\nBrands help consumers recognize certain quality parameters. In some cases, brands are just used to endow the product with unique story and character which itself can be a basis for product differentiation.\n\nIndividual brands have their own identity and the corporate or common name is not used to promote its equity.\n\nIndividual branding requires more expensive advertising and brand extensive brand creation investments.  By extension, each new brand does not benefit from the positive perceptions of earlier brands.\n\nBy contrast, family branding has several advantages.\n\nEach new product is quickly associated with the other products and brand in terms of quality and benefits.\n\nReduced or eliminated time for name identification and advertising for name recognition purposes.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"\"}",
+			"PrimaryKeys": "ProductId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

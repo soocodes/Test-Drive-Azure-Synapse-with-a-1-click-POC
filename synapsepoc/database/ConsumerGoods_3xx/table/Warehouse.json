@@ -1,0 +1,396 @@
+{
+	"name": "Warehouse",
+	"properties": {
+		"Name": "Warehouse",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "ConsumerGoods_3xx"
+		},
+		"Description": "A structure designated for storage of things or items.\nA 'warehouse' is synonymous with 'stockroom'.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "WarehouseId",
+					"Description": "The unique identifier of a Warehouse.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarehouseName",
+					"Description": "The name of the Warehouse.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "LocationId",
+					"Description": "The unique identifier of a Location.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "LocationId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GlobalLocationNumber",
+					"Description": "The Global Location Number (GLN) is a simple tool used to uniquely identify locations. It can be used to identify physical locations such as a warehouse, legal entities, or a function / department within a legal entity. The GLN is part of the GS1 system of standards.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "GlobalLocationNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 13,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarehouseTelephoneNumber",
+					"Description": "The Warehouse Telephone Number.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseTelephoneNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 15,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarehouseFaxNumber",
+					"Description": "The Warehouse Fax Number.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseFaxNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 15,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarehouseEmailAddress",
+					"Description": "The Warehouse email address.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseEmailAddress"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PickAndPackLeadTime",
+					"Description": "The default time required to pick and pack an item at a warehouse.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "PickAndPackLeadTime"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarehouseOrderCutoffTime",
+					"Description": "The latest time each day that new orders will be accepted for delivery for the next scheduled delivery day.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseOrderCutoffTime"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "TotalFloorSpace",
+					"Description": "The total floor space at the Warehouse.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "TotalFloorSpace"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "TotalFloorInventoryStorageSpace",
+					"Description": "The total floor space at the Warehouse that is available for storage of inventory.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "TotalFloorInventoryStorageSpace"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "StorageSpaceUnitOfMeasureId",
+					"Description": "The unit of measure for the size measurement of the Warehouse.\n\nEx:\n- square feet\n- square meter",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "StorageSpaceUnitOfMeasureId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ContractWarehouseIndicator",
+					"Description": "A contract warehouse is a business that handles shipping, receiving, and storage of products on a contract basis.  \n\nContract warehouses will generally require a client to commit to a specific period of time (generally in years) for the services.  \n\nContracts may or may not require clients to purchase or subsidize storage and material-handling equipment.  \n\nFees for contract warehouses may be transaction and storage based, fixed, cost plus, or any combination.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "ContractWarehouseIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "StoreId",
+					"Description": "The unique identifier of a Store.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "StoreId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CustomerId",
+					"Description": "The unique identifier of a Customer.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "CustomerId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CustomerOwnedWarehouseIndicator",
+					"Description": "Indicates whether the customer owns the warehouse.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "CustomerOwnedWarehouseIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CustomerManagedWarehouseIndicator",
+					"Description": "Indicates whether the customer manages the warehouse.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "CustomerManagedWarehouseIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "InventoryOwnedByCustomerIndicator",
+					"Description": "Indicates whether the inventory stored at the warehouse inventory location is owned by the customer.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "InventoryOwnedByCustomerIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "WarehouseTypeId",
+					"Description": "The unique identifier of a warehouse type.",
+					"BaseAttributeReference": {
+						"Entity": "Warehouse.cdm.json/Warehouse",
+						"Name": "WarehouseTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/Warehouse",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/Warehouse",
+				"Properties": {
+					"LinkedServiceName": "azulceqma3hoi4tipocws1-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"WarehouseId\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseId\"},\"WarehouseName\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseName\"},\"LocationId\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"LocationId\"},\"GlobalLocationNumber\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"GlobalLocationNumber\"},\"WarehouseTelephoneNumber\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseTelephoneNumber\"},\"WarehouseFaxNumber\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseFaxNumber\"},\"WarehouseEmailAddress\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseEmailAddress\"},\"PickAndPackLeadTime\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"PickAndPackLeadTime\"},\"WarehouseOrderCutoffTime\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseOrderCutoffTime\"},\"TotalFloorSpace\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"TotalFloorSpace\"},\"TotalFloorInventoryStorageSpace\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"TotalFloorInventoryStorageSpace\"},\"StorageSpaceUnitOfMeasureId\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"StorageSpaceUnitOfMeasureId\"},\"ContractWarehouseIndicator\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"ContractWarehouseIndicator\"},\"StoreId\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"StoreId\"},\"CustomerId\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"CustomerId\"},\"CustomerOwnedWarehouseIndicator\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"CustomerOwnedWarehouseIndicator\"},\"CustomerManagedWarehouseIndicator\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"CustomerManagedWarehouseIndicator\"},\"InventoryOwnedByCustomerIndicator\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"InventoryOwnedByCustomerIndicator\"},\"WarehouseTypeId\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseTypeId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Warehouse\",\"path\":\"Warehouse.cdm.json/Warehouse\"},\"description\":\"A structure designated for storage of things or items.\\nA 'warehouse' is synonymous with 'stockroom'.\",\"primaryKey\":[\"WarehouseId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Warehouse.\",\"isNullable\":false,\"name\":\"WarehouseId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Warehouse.\",\"isNullable\":true,\"name\":\"WarehouseName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"LocationId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Location.\",\"isNullable\":true,\"name\":\"LocationId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"GlobalLocationNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":13,\"description\":\"The Global Location Number (GLN) is a simple tool used to uniquely identify locations. It can be used to identify physical locations such as a warehouse, legal entities, or a function / department within a legal entity. The GLN is part of the GS1 system of standards.\",\"isNullable\":true,\"scale\":0,\"name\":\"GlobalLocationNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseTelephoneNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":15,\"description\":\"The Warehouse Telephone Number.\",\"isNullable\":true,\"scale\":0,\"name\":\"WarehouseTelephoneNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseFaxNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":15,\"description\":\"The Warehouse Fax Number.\",\"isNullable\":true,\"scale\":0,\"name\":\"WarehouseFaxNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseEmailAddress\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The Warehouse email address.\",\"isNullable\":true,\"name\":\"WarehouseEmailAddress\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"PickAndPackLeadTime\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The default time required to pick and pack an item at a warehouse.\",\"isNullable\":true,\"name\":\"PickAndPackLeadTime\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseOrderCutoffTime\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The latest time each day that new orders will be accepted for delivery for the next scheduled delivery day.\",\"isNullable\":true,\"name\":\"WarehouseOrderCutoffTime\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"TotalFloorSpace\"},\"dataType\":\"integer\",\"description\":\"The total floor space at the Warehouse.\",\"isNullable\":true,\"name\":\"TotalFloorSpace\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"TotalFloorInventoryStorageSpace\"},\"dataType\":\"integer\",\"description\":\"The total floor space at the Warehouse that is available for storage of inventory.\",\"isNullable\":true,\"name\":\"TotalFloorInventoryStorageSpace\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"StorageSpaceUnitOfMeasureId\"},\"dataType\":\"integer\",\"description\":\"The unit of measure for the size measurement of the Warehouse.\\n\\nEx:\\n- square feet\\n- square meter\",\"isNullable\":true,\"name\":\"StorageSpaceUnitOfMeasureId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"ContractWarehouseIndicator\"},\"dataType\":\"boolean\",\"description\":\"A contract warehouse is a business that handles shipping, receiving, and storage of products on a contract basis.  \\n\\nContract warehouses will generally require a client to commit to a specific period of time (generally in years) for the services.  \\n\\nContracts may or may not require clients to purchase or subsidize storage and material-handling equipment.  \\n\\nFees for contract warehouses may be transaction and storage based, fixed, cost plus, or any combination.\",\"isNullable\":true,\"name\":\"ContractWarehouseIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"StoreId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Store.\",\"isNullable\":true,\"name\":\"StoreId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"CustomerId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Customer.\",\"isNullable\":true,\"name\":\"CustomerId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"CustomerOwnedWarehouseIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates whether the customer owns the warehouse.\",\"isNullable\":true,\"name\":\"CustomerOwnedWarehouseIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"CustomerManagedWarehouseIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates whether the customer manages the warehouse.\",\"isNullable\":true,\"name\":\"CustomerManagedWarehouseIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"InventoryOwnedByCustomerIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates whether the inventory stored at the warehouse inventory location is owned by the customer.\",\"isNullable\":true,\"name\":\"InventoryOwnedByCustomerIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Warehouse.cdm.json/Warehouse\",\"name\":\"WarehouseTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a warehouse type.\",\"isNullable\":true,\"name\":\"WarehouseTypeId\"}]}}}",
+			"Description": "A structure designated for storage of things or items.\nA 'warehouse' is synonymous with 'stockroom'.",
+			"DisplayFolderInfo": "{\"name\":\"Inventory\",\"colorCode\":\"\"}",
+			"PrimaryKeys": "WarehouseId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

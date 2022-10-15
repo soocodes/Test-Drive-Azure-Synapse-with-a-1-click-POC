@@ -1,0 +1,411 @@
+{
+	"name": "Employee",
+	"properties": {
+		"Name": "Employee",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "ConsumerGoods_3xx"
+		},
+		"Description": "An individual who is hired to provide services to a company on a regular basis in exchange for compensation.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "EmployeeId",
+					"Description": "The unique identifier of an Employee.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EmployeeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmployeeName",
+					"Description": "The name of the Employee.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EmployeeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DateOfBirth",
+					"Description": "The date of birth of the employee.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "DateOfBirth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DateOfDeath",
+					"Description": "The date of death of the employee.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "DateOfDeath"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmployeeStandardCostAmount",
+					"Description": "The standard cost for the employee.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EmployeeStandardCostAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmployeeOvertimeCostAmount",
+					"Description": "The overtime cost for the employee.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EmployeeOvertimeCostAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmployeeHireDate",
+					"Description": "The date upon which the Employee was hired.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EmployeeHireDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "HighlyCompensatedEmployeeIndicator",
+					"Description": "Highly compensated employees are employees that receive compensation over a certain amount for a specific year.  The amount that qualifies an employee as a 'highly compensated' employee varies from year to year.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "HighlyCompensatedEmployeeIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "KeyEmployeeIndicator",
+					"Description": "An employee who, at any time during the plan year is (1) an officer having annual compensation greater than $130,000 (subject to cost-of-living adjusting), (2) a more-than-5-percent owner of the employer, or (3) a more-than-1-percent owner whose annual compensation exceeds $150,000.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "KeyEmployeeIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "ExemptEmployeeIndicator",
+					"Description": "An exempt employee is an employee who, because of his or her positional duties and responsibilities and level of decision making authority is exempt from the overtime provisions of the Fair Labor Standards Act (FLSA). Exempt employees are expected, by most organizations, to work whatever hours are necessary to accomplish the goals and deliverables of the position. Thus, exempt employees have more flexibility in their schedules to come and go as necessary to accomplish work than non-exempt or hourly employees.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "ExemptEmployeeIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "NonexemptEmployeeIndicator",
+					"Description": "When an employee is classified as nonexempt, it means that the employee is entitled to a minimum wage, and overtime pay at the rate of time and one-half the regular rate for all hours worked in excess of 40 hours per week, as well as other protections under child labor and equal pay as prescribed by the FLSA.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "NonexemptEmployeeIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "AlienStatusId",
+					"Description": "The unique identifier of an Alien Status.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "AlienStatusId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "SexId",
+					"Description": "The unique identifier of a Sex.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "SexId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GenderId",
+					"Description": "The unique identifier of a Gender.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "GenderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "RacialCategoryId",
+					"Description": "The unique identifier of a Racial Category.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "RacialCategoryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EthnicCategoryId",
+					"Description": "The unique identifier of an Ethnic Category.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EthnicCategoryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmploymentLeadSourceId",
+					"Description": "The unique identifier of an Employment Lead Source.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "EmploymentLeadSourceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "SecurityClearanceId",
+					"Description": "The unique identifier of the Security Clearance.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "SecurityClearanceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "SecurityLevelId",
+					"Description": "The unique identifier of the Security Level.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "SecurityLevelId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "Employee.cdm.json/Employee",
+						"Name": "PartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/Employee",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/Employee",
+				"Properties": {
+					"LinkedServiceName": "azulceqma3hoi4tipocws1-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"EmployeeId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeId\"},\"EmployeeName\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeName\"},\"DateOfBirth\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"DateOfBirth\"},\"DateOfDeath\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"DateOfDeath\"},\"EmployeeStandardCostAmount\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeStandardCostAmount\"},\"EmployeeOvertimeCostAmount\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeOvertimeCostAmount\"},\"EmployeeHireDate\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeHireDate\"},\"HighlyCompensatedEmployeeIndicator\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"HighlyCompensatedEmployeeIndicator\"},\"KeyEmployeeIndicator\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"KeyEmployeeIndicator\"},\"ExemptEmployeeIndicator\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"ExemptEmployeeIndicator\"},\"NonexemptEmployeeIndicator\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"NonexemptEmployeeIndicator\"},\"AlienStatusId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"AlienStatusId\"},\"SexId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"SexId\"},\"GenderId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"GenderId\"},\"RacialCategoryId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"RacialCategoryId\"},\"EthnicCategoryId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EthnicCategoryId\"},\"EmploymentLeadSourceId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmploymentLeadSourceId\"},\"SecurityClearanceId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"SecurityClearanceId\"},\"SecurityLevelId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"SecurityLevelId\"},\"PartyId\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"PartyId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Employee\",\"path\":\"Employee.cdm.json/Employee\"},\"description\":\"An individual who is hired to provide services to a company on a regular basis in exchange for compensation.\",\"primaryKey\":[\"EmployeeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employee.\",\"isNullable\":false,\"name\":\"EmployeeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Employee.\",\"isNullable\":true,\"name\":\"EmployeeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"DateOfBirth\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of birth of the employee.\",\"isNullable\":true,\"name\":\"DateOfBirth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"DateOfDeath\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of death of the employee.\",\"isNullable\":true,\"name\":\"DateOfDeath\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeStandardCostAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The standard cost for the employee.\",\"isNullable\":true,\"scale\":2,\"name\":\"EmployeeStandardCostAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeOvertimeCostAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The overtime cost for the employee.\",\"isNullable\":true,\"scale\":2,\"name\":\"EmployeeOvertimeCostAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmployeeHireDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date upon which the Employee was hired.\",\"isNullable\":true,\"name\":\"EmployeeHireDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"HighlyCompensatedEmployeeIndicator\"},\"dataType\":\"boolean\",\"description\":\"Highly compensated employees are employees that receive compensation over a certain amount for a specific year.  The amount that qualifies an employee as a 'highly compensated' employee varies from year to year.\",\"isNullable\":true,\"name\":\"HighlyCompensatedEmployeeIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"KeyEmployeeIndicator\"},\"dataType\":\"boolean\",\"description\":\"An employee who, at any time during the plan year is (1) an officer having annual compensation greater than $130,000 (subject to cost-of-living adjusting), (2) a more-than-5-percent owner of the employer, or (3) a more-than-1-percent owner whose annual compensation exceeds $150,000.\",\"isNullable\":true,\"name\":\"KeyEmployeeIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"ExemptEmployeeIndicator\"},\"dataType\":\"boolean\",\"description\":\"An exempt employee is an employee who, because of his or her positional duties and responsibilities and level of decision making authority is exempt from the overtime provisions of the Fair Labor Standards Act (FLSA). Exempt employees are expected, by most organizations, to work whatever hours are necessary to accomplish the goals and deliverables of the position. Thus, exempt employees have more flexibility in their schedules to come and go as necessary to accomplish work than non-exempt or hourly employees.\",\"isNullable\":true,\"name\":\"ExemptEmployeeIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"NonexemptEmployeeIndicator\"},\"dataType\":\"boolean\",\"description\":\"When an employee is classified as nonexempt, it means that the employee is entitled to a minimum wage, and overtime pay at the rate of time and one-half the regular rate for all hours worked in excess of 40 hours per week, as well as other protections under child labor and equal pay as prescribed by the FLSA.\",\"isNullable\":true,\"name\":\"NonexemptEmployeeIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"AlienStatusId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Alien Status.\",\"isNullable\":true,\"name\":\"AlienStatusId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"SexId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Sex.\",\"isNullable\":true,\"name\":\"SexId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"GenderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Gender.\",\"isNullable\":true,\"name\":\"GenderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"RacialCategoryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Racial Category.\",\"isNullable\":true,\"name\":\"RacialCategoryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EthnicCategoryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Ethnic Category.\",\"isNullable\":true,\"name\":\"EthnicCategoryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"EmploymentLeadSourceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employment Lead Source.\",\"isNullable\":true,\"name\":\"EmploymentLeadSourceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"SecurityClearanceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Security Clearance.\",\"isNullable\":true,\"name\":\"SecurityClearanceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"SecurityLevelId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Security Level.\",\"isNullable\":true,\"name\":\"SecurityLevelId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Employee.cdm.json/Employee\",\"name\":\"PartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":true,\"name\":\"PartyId\"}]}}}",
+			"Description": "An individual who is hired to provide services to a company on a regular basis in exchange for compensation.",
+			"DisplayFolderInfo": "{\"name\":\"Human Resources & Payroll\",\"colorCode\":\"\"}",
+			"PrimaryKeys": "EmployeeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,555 @@
+{
+	"name": "Document",
+	"properties": {
+		"Name": "Document",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "ConsumerGoods_3xx"
+		},
+		"Description": "A specific physical (written or printed) paper or electronic file that contains information.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "DocumentId",
+					"Description": "The unique identifier of a Document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentName",
+					"Description": "The name of the Document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentDescription",
+					"Description": "The description of the Document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "GlobalDocumentTypeIdentifier",
+					"Description": "The Global Document Type Identifier (GDTI) is part of the GS1 system of standards. It is used to identify a document by type or specifically as required.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "GlobalDocumentTypeIdentifier"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 30,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentScopeStatement",
+					"Description": "The scope of the document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentScopeStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentRevisionNumber",
+					"Description": "The revision number of the associated document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentRevisionNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentCreatedTimestamp",
+					"Description": "The timestamp that the Document was created.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentCreatedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentCompletedTimestamp",
+					"Description": "The timestamp that the document was completed.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentCompletedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentFiledTimestamp",
+					"Description": "The timestamp that the document was filed.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentFiledTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentFirstPublishedTimestamp",
+					"Description": "The timestamp that the document was first published.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentFirstPublishedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentMinimumRetentionTimestamp",
+					"Description": "The timestamp that a document must be retained until. This is typically the earliest timestamp that a document can be deleted and in many cases the timestamp that the document should be deleted.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentMinimumRetentionTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentCopyrightTimestamp",
+					"Description": "The document copyright timestamp.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentCopyrightTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentDeletedTimestamp",
+					"Description": "The timestamp that the Document was deleted. Once a document is deleted all data associated with the document, attributes of the document (including Document Image) and related entities may be deleted.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentDeletedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentImage",
+					"Description": "The image or text of the document (scanned).",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentImage"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "binary",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "binary"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentText",
+					"Description": "The text of the document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentNote",
+					"Description": "A note, comment or additional information regarding the Document.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "NumberOfPages",
+					"Description": "The number of document pages.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "NumberOfPages"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PageSize",
+					"Description": "The size of the document pages.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "PageSize"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentUrl",
+					"Description": "The URL at which the document is located.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentUrl"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2083,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "IsoLanguageId",
+					"Description": "The unique identifier of an ISO Language.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "IsoLanguageId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DeliveryMethodId",
+					"Description": "The unique identifier of a document delivery method.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DeliveryMethodId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentFormatTypeId",
+					"Description": "The unique identifier of a document format type.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentFormatTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentTypeId",
+					"Description": "The unique identifier of a Document Type.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "MediaTypeId",
+					"Description": "The unique identifier of a Media Type.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "MediaTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CountryId",
+					"Description": "The unique identifier of the Country.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "CountryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "StateId",
+					"Description": "The unique identifier of a State.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "StateId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "IdentificationId",
+					"Description": "The unique identifier of the identification.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "IdentificationId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DocumentVersion",
+					"Description": "The identifier that is used to identify this version of the activity definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the activity definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge assets, refer to the Decision Support Service specification. Note that a version is required for non-experimental active assets.",
+					"BaseAttributeReference": {
+						"Entity": "Document.cdm.json/Document",
+						"Name": "DocumentVersion"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/Document",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://dlsazupocfs1@azulceqma3hoi4tipoc.dfs.core.windows.net//ConsumerGoods_3xx/Document",
+				"Properties": {
+					"LinkedServiceName": "azulceqma3hoi4tipocws1-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"DocumentId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentId\"},\"DocumentName\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentName\"},\"DocumentDescription\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentDescription\"},\"GlobalDocumentTypeIdentifier\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"GlobalDocumentTypeIdentifier\"},\"DocumentScopeStatement\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentScopeStatement\"},\"DocumentRevisionNumber\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentRevisionNumber\"},\"DocumentCreatedTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentCreatedTimestamp\"},\"DocumentCompletedTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentCompletedTimestamp\"},\"DocumentFiledTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentFiledTimestamp\"},\"DocumentFirstPublishedTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentFirstPublishedTimestamp\"},\"DocumentMinimumRetentionTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentMinimumRetentionTimestamp\"},\"DocumentCopyrightTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentCopyrightTimestamp\"},\"DocumentDeletedTimestamp\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentDeletedTimestamp\"},\"DocumentImage\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentImage\"},\"DocumentText\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentText\"},\"DocumentNote\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentNote\"},\"NumberOfPages\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"NumberOfPages\"},\"PageSize\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"PageSize\"},\"DocumentUrl\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentUrl\"},\"IsoLanguageId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"IsoLanguageId\"},\"DeliveryMethodId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DeliveryMethodId\"},\"DocumentFormatTypeId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentFormatTypeId\"},\"DocumentTypeId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentTypeId\"},\"MediaTypeId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"MediaTypeId\"},\"CountryId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"CountryId\"},\"StateId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"StateId\"},\"IdentificationId\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"IdentificationId\"},\"DocumentVersion\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentVersion\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Document\",\"path\":\"Document.cdm.json/Document\"},\"description\":\"A specific physical (written or printed) paper or electronic file that contains information.\",\"primaryKey\":[\"DocumentId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Document.\",\"isNullable\":false,\"name\":\"DocumentId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Document.\",\"isNullable\":true,\"name\":\"DocumentName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Document.\",\"isNullable\":true,\"name\":\"DocumentDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"GlobalDocumentTypeIdentifier\"},\"dataType\":\"string\",\"dataTypeLength\":30,\"description\":\"The Global Document Type Identifier (GDTI) is part of the GS1 system of standards. It is used to identify a document by type or specifically as required.\",\"isNullable\":true,\"name\":\"GlobalDocumentTypeIdentifier\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentScopeStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The scope of the document.\",\"isNullable\":true,\"name\":\"DocumentScopeStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentRevisionNumber\"},\"dataType\":\"integer\",\"description\":\"The revision number of the associated document.\",\"isNullable\":true,\"name\":\"DocumentRevisionNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentCreatedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the Document was created.\",\"isNullable\":true,\"name\":\"DocumentCreatedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentCompletedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the document was completed.\",\"isNullable\":true,\"name\":\"DocumentCompletedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentFiledTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the document was filed.\",\"isNullable\":true,\"name\":\"DocumentFiledTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentFirstPublishedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the document was first published.\",\"isNullable\":true,\"name\":\"DocumentFirstPublishedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentMinimumRetentionTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that a document must be retained until. This is typically the earliest timestamp that a document can be deleted and in many cases the timestamp that the document should be deleted.\",\"isNullable\":true,\"name\":\"DocumentMinimumRetentionTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentCopyrightTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The document copyright timestamp.\",\"isNullable\":true,\"name\":\"DocumentCopyrightTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentDeletedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the Document was deleted. Once a document is deleted all data associated with the document, attributes of the document (including Document Image) and related entities may be deleted.\",\"isNullable\":true,\"name\":\"DocumentDeletedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentImage\"},\"dataType\":\"binary\",\"description\":\"The image or text of the document (scanned).\",\"isNullable\":true,\"name\":\"DocumentImage\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The text of the document.\",\"isNullable\":true,\"name\":\"DocumentText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Document.\",\"isNullable\":true,\"name\":\"DocumentNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"NumberOfPages\"},\"dataType\":\"integer\",\"description\":\"The number of document pages.\",\"isNullable\":true,\"name\":\"NumberOfPages\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"PageSize\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The size of the document pages.\",\"isNullable\":true,\"name\":\"PageSize\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentUrl\"},\"dataType\":\"string\",\"dataTypeLength\":2083,\"description\":\"The URL at which the document is located.\",\"isNullable\":true,\"name\":\"DocumentUrl\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"IsoLanguageId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an ISO Language.\",\"isNullable\":true,\"name\":\"IsoLanguageId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DeliveryMethodId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a document delivery method.\",\"isNullable\":true,\"name\":\"DeliveryMethodId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentFormatTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a document format type.\",\"isNullable\":true,\"name\":\"DocumentFormatTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Document Type.\",\"isNullable\":true,\"name\":\"DocumentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"MediaTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Media Type.\",\"isNullable\":true,\"name\":\"MediaTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"CountryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Country.\",\"isNullable\":true,\"name\":\"CountryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"StateId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a State.\",\"isNullable\":true,\"name\":\"StateId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"IdentificationId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the identification.\",\"isNullable\":true,\"name\":\"IdentificationId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Document.cdm.json/Document\",\"name\":\"DocumentVersion\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The identifier that is used to identify this version of the activity definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the activity definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge assets, refer to the Decision Support Service specification. Note that a version is required for non-experimental active assets.\",\"isNullable\":true,\"name\":\"DocumentVersion\"}]}}}",
+			"Description": "A specific physical (written or printed) paper or electronic file that contains information.",
+			"DisplayFolderInfo": "{\"name\":\"Document Management\",\"colorCode\":\"\"}",
+			"PrimaryKeys": "DocumentId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}
