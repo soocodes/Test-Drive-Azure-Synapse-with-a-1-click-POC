@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "micpqfqxcdqrbhkqpocws1"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"TripFaresSynapseAnalyticsLinkedService_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().SynapseWorkspaceName};Initial Catalog=@{linkedService().SQLDedicatedPoolName};User ID=@{linkedService().SQLLoginUsername}"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://micpqfqxcdqrbhkqpoc.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://micpqfqxcdqrbhkqpoc.dfs.core.windows.net/"
+		},
+		"HttpServerTripDataLinkedService_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/Azure/Test-Drive-Azure-Synapse-with-a-1-click-POC/main/tripDataAndFaresCSV/trip-data.csv"
+		},
+		"HttpServerTripFareDataLinkedService_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/Azure/Test-Drive-Azure-Synapse-with-a-1-click-POC/main/tripDataAndFaresCSV/fares-data.csv"
+		},
+		"Products_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/MicrosoftLearning/mslearn-synapse/master/Allfiles/Labs/01/adventureworks/products.csv"
+		},
+		"TripFaresDataLakeStorageLinkedService_properties_typeProperties_url": {
+			"value": "@{concat('https://',linkedService().datalakeAccountName,'.dfs.core.windows.net')}"
+		},
+		"keyVaultLinkedservice_properties_typeProperties_baseUrl": {
+			"value": "@{concat('https://',linkedService().keyVaultName,'.vault.azure.net/')}"
+		}
+	}
+}
